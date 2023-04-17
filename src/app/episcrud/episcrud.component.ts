@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-episcrud',
@@ -23,13 +24,19 @@ export class EpiscrudComponent implements OnInit  {
  
   currentEpiID = "";
 
-  constructor(private http: HttpClient )
+  registerForm!:FormGroup
+  submitted = false ;
+
+  constructor(private http: HttpClient,private formBuilder: FormBuilder )
   {
     this.getAllEpi();
 
   }
+  
   ngOnInit(): void{
-
+      this.registerForm = this.formBuilder.group({
+        label:['',Validators]
+      })
   }
 
   getAllEpi()
