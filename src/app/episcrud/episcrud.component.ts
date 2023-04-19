@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-episcrud',
   templateUrl: './episcrud.component.html',
   styleUrls: ['./episcrud.component.scss']
 })
+
 export class EpiscrudComponent implements OnInit  {
 
   EpisArray : any[] = [];
   isResultLoaded = false;
   isUpdateFormActive = false;
- 
+ //validation
+  registerForm!:FormGroup
+  submitted=false
   
   label: string ="";
   category: string ="";
@@ -24,19 +29,22 @@ export class EpiscrudComponent implements OnInit  {
  
   currentEpiID = "";
 
-  registerForm!:FormGroup
-  submitted = false ;
-
-  constructor(private http: HttpClient,private formBuilder: FormBuilder )
+  constructor(private http: HttpClient, private formBuilder:FormBuilder )
   {
     this.getAllEpi();
 
   }
   
   ngOnInit(): void{
+    //validation
       this.registerForm = this.formBuilder.group({
-        label:['',Validators]
-      })
+      label:['',Validators.required],
+      category:['',Validators.required],
+      type:['',Validators.required],
+      size:['',Validators.required],
+      description:['',Validators.required],
+
+    }) 
   }
 
   getAllEpi()
@@ -65,6 +73,11 @@ export class EpiscrudComponent implements OnInit  {
    
     this.http.post("http://127.0.0.1:8000/api/save",bodyData).subscribe((resultData: any)=>
     {
+      this.submitted = true
+      if(this.registerForm.invalid)
+      {
+        return
+      }
         console.log(resultData);
         alert("Epi Registered Successfully")
         this.getAllEpi();
