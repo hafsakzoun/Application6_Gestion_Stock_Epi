@@ -8,19 +8,19 @@
             <div class="login-form col-sm-12 ">
                 <h4 > Welcome to EHS Equip!</h4>
                 <p>Please Login</p>
-            <form>
+            <form #loginForm="ngForm" (ngSubmit)="submitlogin()">
                 <div class="form-group">
                     <label>User ID</label>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control"  name="TEID" [(ngModel)]="form.TEID" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control " placeholder="">
+                    <input type="password" class="form-control "  name="password" [(ngModel)]="form.password" required>
                 </div>
                 <div >
                     <input type="checkbox"> &nbsp; Remember Me
                 </div>
-                <button type="submit" class="btn btn-log">Sign up</button>
+                <button type="submit" class="btn btn-log" [disabled]="!loginForm.valid">Sign up</button>
             </form>
             <div class="d-flex  links ">
                 Don't have an account?

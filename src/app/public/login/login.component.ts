@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
+  public form={
+    TEID:null,
+    password:null
+  }
+  constructor(){}
+  ngOnInit():void{}
+  submitlogin(){
+    console.log(this.form);
+  }
 }
