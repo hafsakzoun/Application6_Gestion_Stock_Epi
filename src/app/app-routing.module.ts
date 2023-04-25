@@ -5,6 +5,7 @@ import { EpiscrudComponent } from './episcrud/episcrud.component';
 import { SecureComponent } from './secure/secure.component';
 import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './public/login/login.component';
+import { SignupComponent } from './public/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     component:PublicComponent,
   children:[
     {path:'',component:LoginComponent},
-    {path:'login',component:LoginComponent}
+    {path:'login',component:LoginComponent},
+    {path:'signup',component:SignupComponent}
 
   ]
 },
