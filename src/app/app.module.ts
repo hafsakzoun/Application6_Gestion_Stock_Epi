@@ -9,11 +9,15 @@ import { SecureComponent } from './secure/secure.component';
 import { PublicModule } from './public/public.module';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './admin/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     EpiscrudComponent,
-    SecureComponent
+    SecureComponent,
+    AdminComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
