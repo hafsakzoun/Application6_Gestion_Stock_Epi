@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PublicComponent } from './public/public.component';
 import { EpiscrudComponent } from './episcrud/episcrud.component';
 import { SecureComponent } from './secure/secure.component';
-import { HomeComponent } from './public/home/home.component';
+import { SignupComponent } from './public/signup/signup.component';
 import { LoginComponent } from './public/login/login.component';
 
 const routes: Routes = [
@@ -12,7 +12,9 @@ const routes: Routes = [
     component:PublicComponent,
   children:[
     {path:'',component:LoginComponent},
-    {path:'login',component:LoginComponent}
+    {path:'login',component:LoginComponent},
+    {path:'signup',component:SignupComponent}
+
 
   ]
 },
