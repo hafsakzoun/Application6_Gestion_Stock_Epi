@@ -1,1 +1,52 @@
-<p>signup works!</p>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="sidenav">
+       
+            <div class="login-form col-sm-12 ">
+
+                <h2> Welcome to EHS Equip! </h2>
+                <p>Register Here</p>
+            <form #regitrationForm="ngForm" (ngSubmit)="submitSignup()">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control"  name="name" [(ngModel)]="form.name" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control"  name="email" [(ngModel)]="form.email" required>
+                </div>
+                <div class="form-group">
+                    <label>User ID</label>
+                    <input type="text" class="form-control"  name="TEID" [(ngModel)]="form.TEID" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control "  name="password" [(ngModel)]="form.password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control "  name="password_confirmation" [(ngModel)]="form.password_confirmation" required>
+                </div>
+                <div >
+                    <input type="checkbox"> &nbsp; Remember Me
+                </div>
+                <button type="submit" class="btn btn-log" [disabled]="!regitrationForm.valid">Sign up</button>
+            </form>
+            <div class="d-flex  links ">
+                You already have an account?
+                <a class="mb-3" href="/login"> &nbsp; Login</a>
+            </div>
+           
+            </div>
+            
+                
+                <div class="d-flex justify-content-center licence">
+                © 2023 - TE Connectivity Industrial Morocco.
+                </div>
+            
+    </div>
+
