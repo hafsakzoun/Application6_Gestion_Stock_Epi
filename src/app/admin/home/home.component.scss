@@ -15,22 +15,26 @@
     font-weight: 500;
     line-height: 40px;
     margin-bottom: 40px ;
+    margin-right: 50%;
   }
   .col-md-6 {
     width: 90%;
   }
-  .btn-orange-moon {
-    background: rgba(233, 131, 0,1);  /* fallback for old browsers */
-    color: #fff;
-    border-radius: 0% !important;
-    font-size: 30px;
-    font-weight: 400;
-    
-}
+
 .main-title
 {
     font-size: 30px;
     font-weight: 600;
     margin-top: 30px; 
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
+    margin-left: 40px; 
+}
+.btn-orange-moon {
+  background: rgba(233, 131, 0,1);  /* fallback for old browsers */
+  color: #fff;
+  border-radius: 0% !important;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 3%;
+  
 }
