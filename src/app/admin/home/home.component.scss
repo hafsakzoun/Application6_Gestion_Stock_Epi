@@ -33,8 +33,18 @@
   background: rgba(233, 131, 0,1);  /* fallback for old browsers */
   color: #fff;
   border-radius: 0% !important;
+  width: 100%;
   font-size: 30px;
   font-weight: 400;
-  margin-top: 3%;
-  
+  margin: 3%;
+}
+.glyphicon
+{
+  position: absolute;
+ top:30%;
+  right: 0;
+}
+.box-part
+{
+  position: relative;
 }
