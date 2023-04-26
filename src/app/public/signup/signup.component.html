@@ -10,7 +10,7 @@
 
                 <h2> Welcome to EHS Equip! </h2>
                 <p>Register Here</p>
-            <form #regitrationForm="ngForm" (ngSubmit)="submitSignup()">
+            <form #regitrationForm="ngForm" method="POST" (ngSubmit)="submitSignup()">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control"  name="name" [(ngModel)]="form.name" required>
@@ -31,9 +31,7 @@
                     <label>Confirm Password</label>
                     <input type="password" class="form-control "  name="password_confirmation" [(ngModel)]="form.password_confirmation" required>
                 </div>
-                <div >
-                    <input type="checkbox"> &nbsp; Remember Me
-                </div>
+               
                 <button type="submit" class="btn btn-log" [disabled]="!regitrationForm.valid">Sign up</button>
             </form>
             <div class="d-flex  links ">
