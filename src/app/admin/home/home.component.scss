@@ -21,9 +21,8 @@
   }
   .btn-orange-moon {
     background: rgba(233, 131, 0,1);  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f7b733, rgba(233, 131, 0,1));  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f7b733, rgba(233, 131, 0,1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #fff;
+    border-radius: 0% !important;
     font-size: 30px;
     font-weight: 400;
     
