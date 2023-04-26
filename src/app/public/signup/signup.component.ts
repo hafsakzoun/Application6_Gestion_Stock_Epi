@@ -16,12 +16,22 @@ export class SignupComponent {
   constructor(private backend:BackendService){}
   public error:any =[];
   ngOnInit():void{}
-  submitSignup(){
-    console.log(this.form);
-    return this.backend.signup(this.form).subscribe(data=>console.log(data),error=>this.handleError(error)); 
+
+  submitSignup() {
+    return this.backend.signup(this.form).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: error => {
+        this.handleError(error);
+      }
+    });
   }
+  
   handleError(error:any){
-    this.error=error.error.error;
+    if (error && error.error && error.error.error) {
+      this.error = error.error.error;
+    }
   }
 
 }
