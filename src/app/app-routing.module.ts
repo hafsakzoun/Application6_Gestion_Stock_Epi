@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { PublicComponent } from './public/public.component';
 import { EpiscrudComponent } from './episcrud/episcrud.component';
 import { SecureComponent } from './secure/secure.component';
-import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './public/login/login.component';
 import { SignupComponent } from './public/signup/signup.component';
+import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './admin/home/home.component';
+
 
 const routes: Routes = [
   {
@@ -17,7 +19,11 @@ const routes: Routes = [
     {path:'signup',component:SignupComponent}
 
   ]
-},
+},  
+  {path:'admin', component: AdminComponent,
+    children: [
+      {path:'home',component:HomeComponent}
+    ]},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent}
 ];
