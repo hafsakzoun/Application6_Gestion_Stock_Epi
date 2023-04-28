@@ -7,6 +7,7 @@ import { LoginComponent } from './public/login/login.component';
 import { SignupComponent } from './public/signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './admin/home/home.component';
+import { UserComponent } from './user/user.component';
 import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [
@@ -25,8 +26,8 @@ const routes: Routes = [
     ]},
   {path:'support',component:SupportComponent},
   {path:'episcrud',component:EpiscrudComponent},
-  {path:'secure',component:SecureComponent}
-
+  {path:'secure',component:SecureComponent},
+  {path:'user',component:UserComponent}
 ];
 
 @NgModule({
