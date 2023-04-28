@@ -1,0 +1,51 @@
+/* Made with love by Mutiullah Samim*/
+
+body{
+color: white;
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+
+}
+.d-flex
+{
+    justify-content: right !important;
+}
+img
+{
+    max-width: 30%;
+}
+
+.card{
+height: 500px;
+justify-content: right !important;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+h1
+{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+}
+h2{
+   
+    font-weight: 800;
+    margin-left: 5%;
+}
+.material-symbols-rounded {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  .txt
+  {
+    font-size: large;
+    vertical-align: middle;
+  }
