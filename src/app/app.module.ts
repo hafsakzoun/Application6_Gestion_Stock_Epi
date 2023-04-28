@@ -11,15 +11,15 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
-
+import { SupportComponent } from './support/support.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     EpiscrudComponent,
     SecureComponent,
-    
-    
+    SupportComponent,
+   
   ],
   imports: [
     BrowserModule,

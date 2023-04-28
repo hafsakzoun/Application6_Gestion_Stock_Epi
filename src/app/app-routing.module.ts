@@ -8,7 +8,7 @@ import { SignupComponent } from './public/signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './admin/home/home.component';
 import { UserComponent } from './user/user.component';
-
+import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [
   {
@@ -18,13 +18,13 @@ const routes: Routes = [
     {path:'',component:LoginComponent},
     {path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent}
-
   ]
 },  
   {path:'admin', component: AdminComponent,
     children: [
-      {path:'home',component:HomeComponent}
+      {path:'home',component:HomeComponent},
     ]},
+  {path:'support',component:SupportComponent},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent},
   {path:'user',component:UserComponent}
