@@ -10,12 +10,15 @@ import { PublicModule } from './public/public.module';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminModule } from './admin/admin.module';
+import { UserModule } from './user/user.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     EpiscrudComponent,
     SecureComponent,
+    
     
   ],
   imports: [
@@ -28,6 +31,7 @@ import { AdminModule } from './admin/admin.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AdminModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
