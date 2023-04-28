@@ -17,7 +17,6 @@ const routes: Routes = [
     {path:'',component:LoginComponent},
     {path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent}
-
   ]
 },  
   {path:'admin', component: AdminComponent,
@@ -27,6 +26,7 @@ const routes: Routes = [
   {path:'support',component:SupportComponent},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent}
+
 ];
 
 @NgModule({
