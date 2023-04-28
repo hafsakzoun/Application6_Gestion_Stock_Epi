@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { BackendService } from 'src/app/services/backend.service';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,9 +11,28 @@ export class LoginComponent {
     TEID:null,
     password:null
   }
-  constructor(){}
+  constructor(private backend:BackendService,private token:TokenService){}
   ngOnInit():void{}
+  public error =null;
   submitlogin(){
-    console.log(this.form);
+    //console.log(this.form);
+    return this.backend.login(this.form).subscribe({
+      next: data => {
+        this.handleResponse(data);
+      },
+      error: error => {
+        this.handleError(error);
+      }
+    });
+  }
+  
+  handleError(error:any){
+    if (error && error.error && error.error.error) {
+      this.error = error.error.error;
+    }
+  }
+  handleResponse(data:any){
+    console.log(data.access_token);
+    this.token.handle(data.access_token);
   }
 }
