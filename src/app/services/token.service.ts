@@ -38,4 +38,7 @@ export class TokenService {
     return JSON.parse(atob(payload));
 
   }
+  loggedIn(){
+    return this.isValid();
+  }
 }
