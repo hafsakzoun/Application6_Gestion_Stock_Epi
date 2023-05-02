@@ -11,7 +11,14 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
-import { SupportComponent } from './support/support.component'; 
+import { SupportComponent } from './support/support.component';
+import { PpeAddEditComponent } from './ppe-add-edit/ppe-add-edit.component'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +26,7 @@ import { SupportComponent } from './support/support.component';
     EpiscrudComponent,
     SecureComponent,
     SupportComponent,
+    PpeAddEditComponent,
    
   ],
   imports: [
@@ -31,7 +39,13 @@ import { SupportComponent } from './support/support.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AdminModule,
-    UserModule
+    UserModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
