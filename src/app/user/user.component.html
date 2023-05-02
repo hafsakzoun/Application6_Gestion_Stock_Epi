@@ -1,13 +1,14 @@
 <mat-toolbar>
     <div class="example-button-container">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      <mat-icon style="vertical-align: middle;" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      <span  style="vertical-align: middle; align-content: center;position:absolute;margin-left:70%"> <mat-icon style="vertical-align: middle;">account_circle</mat-icon>  Welcome, {{ userName }}!</span>
     </div>
     <span class="example-spacer">
     </span>
     <div class="example-button-row">
-      <button mat-flat-button >Support</button>
+      <button mat-flat-button style="vertical-align: middle;">Support</button>
       <button mat-flat-button  href="#"(click)="logout($event)" >Logout</button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">   <mat-icon>menu</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu">   <mat-icon style="vertical-align: middle;">menu</mat-icon>
       </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Riase PPE Request</button>

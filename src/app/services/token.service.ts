@@ -41,4 +41,12 @@ export class TokenService {
   loggedIn(){
     return this.isValid();
   }
+  getUser() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      return payload ? payload.sub : null;
+    }
+    return null;
+  }
 }
