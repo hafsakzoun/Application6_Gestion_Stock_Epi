@@ -8,6 +8,13 @@
     z-index: 1;
     background-color: rgba(233, 131, 0,1);
   }
+  .home:hover{
+    color:#000;
+  }
+a 
+{
+  color: #fff;
+}
   .mat-mdc-unelevated-button.mat-unthemed {
     background-color: transparent;
     color:#fff;
@@ -26,4 +33,5 @@
      /* adjust this value to match the height of the toolbar */
     margin-bottom: 60px; /* adjust this value to match the height of the footer */
   }
+ 
   

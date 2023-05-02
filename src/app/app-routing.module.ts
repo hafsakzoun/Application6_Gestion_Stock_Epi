@@ -11,6 +11,9 @@ import { UserComponent } from './user/user.component';
 import { SupportComponent } from './support/support.component';
 import {AfterLoginService} from './services/after-login.service';
 import {BeforeLoginService} from './services/before-login.service';
+import { PpeStockComponent } from './admin/ppe-stock/ppe-stock.component';
+import { PpeConsultationComponent } from './admin/ppe-consultation/ppe-consultation.component';
+import { PpeRequestComponent } from './admin/ppe-request/ppe-request.component';
 const routes: Routes = [
   {
     path:'',
@@ -25,6 +28,9 @@ const routes: Routes = [
   {path:'admin', component: AdminComponent,
     children: [
       {path:'home',component:HomeComponent},
+      {path:'ppeStock',component:PpeStockComponent},
+      {path:'ppeConsultation',component: PpeConsultationComponent},
+      {path:'ppeRequest',component: PpeRequestComponent},
     ]},
   {path:'support',component:SupportComponent},
   {path:'episcrud',component:EpiscrudComponent},

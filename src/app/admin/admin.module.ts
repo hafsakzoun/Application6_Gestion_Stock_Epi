@@ -7,12 +7,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { PpeRequestComponent } from './ppe-request/ppe-request.component';
+import { PpeConsultationComponent } from './ppe-consultation/ppe-consultation.component';
+import { PpeStockComponent } from './ppe-stock/ppe-stock.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     HomeComponent,
+    PpeRequestComponent,
+    PpeConsultationComponent,
+    PpeStockComponent,
    
   ],
   imports: [
