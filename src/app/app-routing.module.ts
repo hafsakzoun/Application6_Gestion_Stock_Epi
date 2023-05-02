@@ -9,15 +9,17 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './admin/home/home.component';
 import { UserComponent } from './user/user.component';
 import { SupportComponent } from './support/support.component';
-
+import {AfterLoginService} from './services/after-login.service';
+import {BeforeLoginService} from './services/before-login.service';
 const routes: Routes = [
   {
     path:'',
     component:PublicComponent,
   children:[
     {path:'',component:LoginComponent},
-    {path:'login',component:LoginComponent},
-    {path:'signup',component:SignupComponent}
+    //{path:'login',component:LoginComponent},
+    {path:'signup',component:SignupComponent,
+  canActivate : [BeforeLoginService]}
   ]
 },  
   {path:'admin', component: AdminComponent,
@@ -27,7 +29,12 @@ const routes: Routes = [
   {path:'support',component:SupportComponent},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent},
-  {path:'user',component:UserComponent}
+  {path:'user',component:UserComponent,
+  canActivate : [AfterLoginService]},
+  {path:'login',
+  component:LoginComponent,
+  canActivate : [BeforeLoginService]
+},
 ];
 
 @NgModule({
