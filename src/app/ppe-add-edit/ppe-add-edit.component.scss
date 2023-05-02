@@ -1,0 +1,25 @@
+.Formbtn
+{
+    height: 48px;
+    width: 30%;
+    margin: 10px;   
+} 
+
+.content{
+    padding-top:5px ;
+}
+  .container  {
+    display: flex;
+    mat-form-field{
+         width: 80%;
+         margin-left:5px
+    }
+  }
+  .row {
+    mat-form-field{
+         width: 95%;
+         margin-left: 15px;
+    }
+  }
+ 
+  

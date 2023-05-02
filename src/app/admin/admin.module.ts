@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { PpeRequestComponent } from './ppe-request/ppe-request.component';
 import { PpeConsultationComponent } from './ppe-consultation/ppe-consultation.component';
 import { PpeStockComponent } from './ppe-stock/ppe-stock.component';
+import { MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { PpeStockComponent } from './ppe-stock/ppe-stock.component';
     MatButtonModule,
     MatMenuModule,
     RouterModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }
