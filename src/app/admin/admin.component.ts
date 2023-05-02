@@ -4,13 +4,11 @@ import { Router } from '@angular/router';
 import {TokenService} from 'src/app/services/token.service';
 import { BackendService } from 'src/app/services/backend.service';
 
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-
 export class AdminComponent implements OnInit{
   public userName !: string;
   public loggedIn:boolean = false;
