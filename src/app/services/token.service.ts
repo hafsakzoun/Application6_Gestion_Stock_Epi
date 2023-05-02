@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TokenService {
-
+ // private payload: any; 
   constructor() { }
   handle(token:any){
     this.set(token);
@@ -29,6 +29,7 @@ export class TokenService {
       }
     }
     return false;
+    
   }
   payload(token:any){
     const payload = token.split('.')[1];
@@ -49,4 +50,16 @@ export class TokenService {
     }
     return null;
   }
+  getRole(){
+    const token = this.get();
+    if(token)
+    {
+      const payload =this.payload(token);
+      if(payload){
+        console.log(payload.role); 
+        return payload.role;
+      }
+    }
+    return null;
+}
 }

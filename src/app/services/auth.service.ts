@@ -10,5 +10,15 @@ authStatus =this.loggedIn.asObservable();
 changeAuthStatus(value:boolean){
   this.loggedIn.next(value);
 }
+isAdmin() {
+  const token = this.token.get();
+  if (token) {
+    const payload = this.token.payload(token);
+    if (payload) {
+      return payload.role === "admin";
+    }
+  }
+  return false;
+}
   constructor(private token:TokenService) { }
 }

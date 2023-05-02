@@ -14,6 +14,8 @@ import {BeforeLoginService} from './services/before-login.service';
 import { PpeStockComponent } from './admin/ppe-stock/ppe-stock.component';
 import { PpeConsultationComponent } from './admin/ppe-consultation/ppe-consultation.component';
 import { PpeRequestComponent } from './admin/ppe-request/ppe-request.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { UserHomeComponent } from './user/user-home/user-home.component';
 const routes: Routes = [
   {
     path:'',
@@ -27,16 +29,24 @@ const routes: Routes = [
 },  
   {path:'admin', component: AdminComponent,
     children: [
-      {path:'home',component:HomeComponent},
-      {path:'ppeStock',component:PpeStockComponent},
-      {path:'ppeConsultation',component: PpeConsultationComponent},
-      {path:'ppeRequest',component: PpeRequestComponent},
+      {path:'home',component:HomeComponent,
+      canActivate: [AfterLoginService, AuthGuardService]},
+      {path:'ppeStock',component:PpeStockComponent,
+      canActivate: [AfterLoginService, AuthGuardService]},
+      {path:'ppeConsultation',component: PpeConsultationComponent,
+      canActivate: [AfterLoginService, AuthGuardService]},
+      {path:'ppeRequest',component: PpeRequestComponent,
+      canActivate: [AfterLoginService, AuthGuardService]},
     ]},
-  {path:'support',component:SupportComponent},
+  {path:'support',component:SupportComponent,
+  canActivate: [AfterLoginService]},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent},
   {path:'user',component:UserComponent,
-  canActivate : [AfterLoginService]},
+  children: [
+    {path:'user-home',component:UserHomeComponent,
+  canActivate : [AfterLoginService]}
+]},
   {path:'login',
   component:LoginComponent,
   canActivate : [BeforeLoginService]

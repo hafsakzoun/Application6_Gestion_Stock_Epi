@@ -34,9 +34,17 @@ export class LoginComponent {
     }
   }
   handleResponse(data:any){
+    console.log("User role:", this.token.getRole());
     console.log(data.access_token);
     this.token.handle(data.access_token);
     this.auth.changeAuthStatus(true);
-    this.router.navigateByUrl('user');
+  
+    if(this.auth.isAdmin()) {
+      this.router.navigateByUrl('admin/home');
+    } else {
+      this.router.navigateByUrl('user/user-home');
+    }
   }
-}
+  
+  
+  }
