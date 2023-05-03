@@ -16,6 +16,8 @@ import { PpeConsultationComponent } from './admin/ppe-consultation/ppe-consultat
 import { PpeRequestComponent } from './admin/ppe-request/ppe-request.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserHomeComponent } from './user/user-home/user-home.component';
+import { RequestFormComponent } from './user/request-form/request-form.component';
+import { UserConsultationComponent } from './user/user-consultation/user-consultation.component';
 const routes: Routes = [
   {
     path:'',
@@ -45,6 +47,10 @@ const routes: Routes = [
   {path:'user',component:UserComponent,
   children: [
     {path:'user-home',component:UserHomeComponent,
+  canActivate : [AfterLoginService]},
+  {path:'request-form',component:RequestFormComponent,
+  canActivate : [AfterLoginService]},
+  {path:'user-consultation',component:UserConsultationComponent,
   canActivate : [AfterLoginService]}
 ]},
   {path:'login',

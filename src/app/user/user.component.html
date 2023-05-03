@@ -1,7 +1,6 @@
 <mat-toolbar>
     <div class="example-button-container">
-      <mat-icon style="vertical-align: middle;" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-      <span  style="vertical-align: middle; align-content: center;position:absolute;margin-left:70%"> <mat-icon style="vertical-align: middle;">account_circle</mat-icon>  Welcome, {{ userName }}!</span>
+      <a routerLink="/user/user-home" style="text-decoration: none;" > <mat-icon class="home" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon> </a>      <span  style="vertical-align: middle; align-content: center;position:absolute;margin-left:20%"> <mat-icon style="vertical-align: middle;">account_circle</mat-icon>  Welcome, {{ userName }}!</span>
     </div>
     <span class="example-spacer">
     </span>
@@ -11,8 +10,8 @@
       <button mat-icon-button [matMenuTriggerFor]="menu">   <mat-icon style="vertical-align: middle;">menu</mat-icon>
       </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Riase PPE Request</button>
-          <button mat-menu-item>PPE Consultation</button>
+          <button routerLink="/user/request-form" mat-menu-item>PPE Request form</button>
+          <button routerLink="/user/user-consultation" mat-menu-item>PPE Consultation</button>
         </mat-menu>
   </div>
   </mat-toolbar>

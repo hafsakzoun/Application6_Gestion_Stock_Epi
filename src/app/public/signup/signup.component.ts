@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BackendService } from 'src/app/services/backend.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -13,7 +14,7 @@ export class SignupComponent {
     password:null,
     password_confirmation:null
   }
-  constructor(private backend:BackendService){}
+  constructor(private backend:BackendService,private router:Router){}
   public error:any =[];
   ngOnInit():void{}
 
@@ -21,6 +22,7 @@ export class SignupComponent {
     return this.backend.signup(this.form).subscribe({
       next: data => {
         console.log(data);
+        this.handleResponse(data);
       },
       error: error => {
         this.handleError(error);
@@ -33,5 +35,11 @@ export class SignupComponent {
       this.error = error.error.error;
     }
   }
-
+  handleResponse(data:any){
+ 
+      this.router.navigateByUrl('login');
+  }
+  
+  
+  
 }

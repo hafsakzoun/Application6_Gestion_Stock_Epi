@@ -1,0 +1,53 @@
+.hero {
+    background-size:cover;
+  }
+ 
+  .hero-title
+  {
+    font-size: 70px;
+    font-weight: 900;
+    margin-top: 5%;
+    line-height: 90px;
+  }
+  .hero-subtitle
+  {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-bottom: 40px ;
+    margin-right: 50%;
+  }
+  .col-md-6 {
+    width: 90%;
+  }
+
+.main-title
+{
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 30px; 
+    margin-bottom: 30px;
+    margin-left: 40px; 
+}
+.btn-orange-moon {
+  background: rgba(233, 131, 0,1);  /* fallback for old browsers */
+  color: #fff;
+  border-radius: 0% !important;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 3%;
+}
+.glyphicon
+{
+  position: absolute;
+  top:30%;
+  right: 0;
+}
+.box-part
+{
+  position: relative;
+}
+a{
+  text-decoration: none;
+}

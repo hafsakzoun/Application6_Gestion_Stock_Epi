@@ -7,11 +7,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router'; 
 import { UserComponent } from './user.component';
 import { UserHomeComponent } from './user-home/user-home.component';
+import { RequestFormComponent } from './request-form/request-form.component';
+import { UserConsultationComponent } from './user-consultation/user-consultation.component';
 
 @NgModule({
   declarations: [
     UserComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    RequestFormComponent,
+    UserConsultationComponent
   ],
   imports: [
     CommonModule,
