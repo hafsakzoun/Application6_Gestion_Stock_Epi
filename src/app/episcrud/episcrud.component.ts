@@ -1,8 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-
-
 
 @Component({
   selector: 'app-episcrud',
@@ -15,9 +12,7 @@ export class EpiscrudComponent implements OnInit  {
   EpisArray : any[] = [];
   isResultLoaded = false;
   isUpdateFormActive = false;
- //validation
-  registerForm!:FormGroup
-  submitted=false
+ 
   
   label: string ="";
   category: string ="";
@@ -25,26 +20,17 @@ export class EpiscrudComponent implements OnInit  {
   size: string="";
   description: string="";
   status: string="";
-  quantity: number=0;
+  quantity: number= 0;
  
   currentEpiID = "";
 
-  constructor(private http: HttpClient, private formBuilder:FormBuilder )
+  constructor(private http: HttpClient)
   {
     this.getAllEpi();
-
   }
   
   ngOnInit(): void{
-    //validation
-      this.registerForm = this.formBuilder.group({
-      label:['',Validators.required],
-      category:['',Validators.required],
-      type:['',Validators.required],
-      size:['',Validators.required],
-      description:['',Validators.required],
 
-    }) 
   }
 
   getAllEpi()
@@ -73,13 +59,8 @@ export class EpiscrudComponent implements OnInit  {
    
     this.http.post("http://127.0.0.1:8000/api/save",bodyData).subscribe((resultData: any)=>
     {
-      this.submitted = true
-      if(this.registerForm.invalid)
-      {
-        return
-      }
         console.log(resultData);
-        alert("Epi Registered Successfully")
+        alert("PPE Registered Successfully")
         this.getAllEpi();
         this.label = '';
         this.category = '';
@@ -90,7 +71,6 @@ export class EpiscrudComponent implements OnInit  {
         this.quantity=0;
     });
   }
-  
   setUpdate(data: any)
   {
    this.label = data.label;
@@ -118,7 +98,7 @@ export class EpiscrudComponent implements OnInit  {
     this.http.put("http://127.0.0.1:8000/api/update"+ "/"+ this.currentEpiID,bodyData).subscribe((resultData: any)=>
     {
         console.log(resultData);
-        alert("Employee Registered Updateddd")
+        alert("PPE Registered Updated ")
         this.getAllEpi();
         this.label = '';
         this.category = '';
@@ -150,7 +130,7 @@ export class EpiscrudComponent implements OnInit  {
     this.http.delete("http://127.0.0.1:8000/api/delete"+ "/"+ data.id).subscribe((resultData: any)=>
     {
         console.log(resultData);
-        alert("Epi Deleted")
+        alert("PPE Deleted")
         this.getAllEpi();
   
     });
