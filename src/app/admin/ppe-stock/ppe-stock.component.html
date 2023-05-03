@@ -1,5 +1,53 @@
 <section class="content">
-
     <button mat-flat-button  style="vertical-align: middle;" (click)="openAddEditPPEForm()" class="addBtn"> <mat-icon>add_circle</mat-icon> ADD PPE </button>
-      
 </section>
+<div class="main-body">
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <h4 *ngIf="!isResultLoaded">Loading.................</h4>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Label</th>
+                <th scope="col">Category</th>
+                <th scope="col">Type</th>
+                <th scope="col">Size</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Option</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let EpiItem of EpisArray">
+
+                <th scope="row">{{EpiItem.id}}</th>
+                <td>{{EpiItem.label | uppercase}}</td>
+                <td>{{EpiItem.category}}</td>
+                <td>{{EpiItem.type}}</td>
+                <td>{{EpiItem.size}}</td>
+                <td>{{EpiItem.description}}</td>
+                <td>{{EpiItem.status}}</td>
+                <td>{{EpiItem.quantity}}</td>
+
+                <td>
+                    <button type="button" class="btn btn-success" (click)="setUpdate(EpiItem)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    
+                    <button type="button" class="btn btn-danger" (click)="setDelete(EpiItem)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                
+                </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+    </div>
+</div>
+
