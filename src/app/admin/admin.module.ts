@@ -12,7 +12,6 @@ import { PpeConsultationComponent } from './ppe-consultation/ppe-consultation.co
 import { PpeStockComponent } from './ppe-stock/ppe-stock.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatTableDataSource } from '@angular/material/table';
 
 
 @NgModule({
@@ -32,8 +31,7 @@ import { MatTableDataSource } from '@angular/material/table';
     MatMenuModule,
     RouterModule,
     MatDialogModule,
-    MatFormFieldModule,
-    MatTableDataSource 
+    MatFormFieldModule, 
   ]
 })
 export class AdminModule { }
