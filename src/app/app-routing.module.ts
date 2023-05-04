@@ -14,12 +14,14 @@ import {BeforeLoginService} from './services/before-login.service';
 import { PpeStockComponent } from './admin/ppe-stock/ppe-stock.component';
 import { PpeConsultationComponent } from './admin/ppe-consultation/ppe-consultation.component';
 import { PpeRequestComponent } from './admin/ppe-request/ppe-request.component';
+import { RoleComponent } from './public/role/role.component';
+import { LoginadminComponent } from './public/loginadmin/loginadmin.component';
 const routes: Routes = [
   {
     path:'',
     component:PublicComponent,
   children:[
-    {path:'',component:LoginComponent},
+    {path:'',component:RoleComponent},
     //{path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent,
   canActivate : [BeforeLoginService]}
@@ -33,6 +35,7 @@ const routes: Routes = [
       {path:'ppeRequest',component: PpeRequestComponent},
     ]},
   {path:'support',component:SupportComponent},
+  {path:'LoginAdmin',component:LoginadminComponent},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent},
   {path:'user',component:UserComponent,
