@@ -9,6 +9,8 @@ import {AuthService} from '../../services/auth.service'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+
+  hide = true;
   public form={
     TEID:null,
     password:null
