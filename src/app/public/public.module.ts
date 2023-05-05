@@ -11,6 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginadminComponent } from './loginadmin/loginadmin.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 @NgModule({
   declarations: [
     PublicComponent,
@@ -27,7 +29,8 @@ import { LoginadminComponent } from './loginadmin/loginadmin.component';
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule
   ]
 })
 export class PublicModule { }
