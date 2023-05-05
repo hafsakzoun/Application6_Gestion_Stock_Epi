@@ -9,20 +9,20 @@
 
                 <h2> Welcome to EHS Equip! </h2>
                 <p>Please Login</p>
-            <form #loginForm="ngForm">
-                <div class="alert alert-danger" ></div>
+            <form #loginForm="ngForm" (ngSubmit)="submitlogin()">
+                <div class="alert alert-danger" [hidden]="!error">{{error}}</div>
                 <div class="form-group">
-                    <label>User ID</label>
-                    <input type="text" class="form-control" >
+                    <label>Admin ID</label>
+                    <input type="text" class="form-control" name="TEID" [(ngModel)]="form.TEID" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control " >
+                    <input type="password" class="form-control " name="password" [(ngModel)]="form.password" required>
                 </div>
                 <div >
                     <input type="checkbox"> &nbsp; Remember Me
                 </div>
-                <button type="submit" class="btn btn-log" >Sign in</button>
+                <button type="submit" class="btn btn-log" [disabled]="!loginForm.valid">Sign in</button>
             </form>
             <div class="d-flex ">
                 Forgot Password?&nbsp; Please contact EHS Team
