@@ -37,6 +37,6 @@ export class LoginComponent {
     console.log(data.access_token);
     this.token.handle(data.access_token);
     this.auth.changeAuthStatus(true);
-    this.router.navigateByUrl('user');
+    this.router.navigateByUrl('user/user-home');
   }
 }
