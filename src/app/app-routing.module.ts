@@ -42,7 +42,7 @@ const routes: Routes = [
   canActivate : [AfterLoginService]},
   {path:'login',
   component:LoginComponent,
-  canActivate : [BeforeLoginService]
+ // canActivate : [BeforeLoginService]
 },
 ];
 

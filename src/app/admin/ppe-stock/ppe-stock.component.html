@@ -2,53 +2,68 @@
     <button mat-flat-button  style="vertical-align: middle;" (click)="openAddEditPPEForm()" class="addBtn"> <mat-icon>add_circle</mat-icon> ADD PPE </button>
 </section>
 <div class="main-body">
+    
     <div class="table-container">
-        <table class="table">
-            <thead>
-                <h4 *ngIf="!isResultLoaded">Loading.................</h4>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Label</th>
-                <th scope="col">Category</th>
-                <th scope="col">Type</th>
-                <th scope="col">Size</th>
-                <th scope="col">Description</th>
-                <th scope="col">Status</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Option</th>
-            </tr>
-            </thead>
-
-            <tbody>
-                <tr *ngFor="let EpiItem of EpisArray">
-
-                <th scope="row">{{EpiItem.id}}</th>
-                <td>{{EpiItem.label | uppercase}}</td>
-                <td>{{EpiItem.category}}</td>
-                <td>{{EpiItem.type}}</td>
-                <td>{{EpiItem.size}}</td>
-                <td>{{EpiItem.description}}</td>
-                <td>{{EpiItem.status}}</td>
-                <td>{{EpiItem.quantity}}</td>
-
-                <td class="action">
-                    <button type="button" class="btn btn-success" (click)="setUpdate(EpiItem)">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    
-                    <button type="button" class="btn btn-danger" (click)="setDelete(EpiItem)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                
-                </td>
-                </tr>
-            </tbody>
-            
-
+        <table mat-table [dataSource]="dataSource" matSort>
+    
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+    
+          <!-- Progress Column -->
+          <ng-container matColumnDef="label">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Label </th>
+            <td mat-cell *matCellDef="let row"> {{row.label}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+            <td mat-cell *matCellDef="let row"> {{row.category}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+            <td mat-cell *matCellDef="let row"> {{row.type}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="size">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
+            <td mat-cell *matCellDef="let row"> {{row.size}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+            <td mat-cell *matCellDef="let row"> {{row.description}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row"> {{row.status}}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+            <td mat-cell *matCellDef="let row"> {{row.quantity}}</td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button color="primary" (click)="openEditForm(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="setDelete(row.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 
-    </div>
 </div>
 

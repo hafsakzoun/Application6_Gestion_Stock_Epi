@@ -1,13 +1,19 @@
-import { Component,OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component,OnInit,Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CoreService } from '../core/core.service';
+
 
 @Component({
   selector: 'app-ppe-add-edit',
   templateUrl: './ppe-add-edit.component.html',
   styleUrls: ['./ppe-add-edit.component.scss']
 })
-export class PpeAddEditComponent  {
+export class PpeAddEditComponent  implements OnInit {
+ 
+  ppeForm: FormGroup;
+
   EpisArray : any[] = [];
   isResultLoaded = false;
   isUpdateFormActive = false 
@@ -23,11 +29,6 @@ export class PpeAddEditComponent  {
   quantity: number=0;
 
   currentEpiID = "";
-
-  constructor(private http: HttpClient)
-  {
-    this.getAllEpi();
-  }
   getAllEpi()
   {
     
@@ -40,85 +41,57 @@ export class PpeAddEditComponent  {
         this.EpisArray = resultData;
     });
   }
-  register()
+
+  constructor(private http: HttpClient,private _fb: FormBuilder,   
+     @Inject(MAT_DIALOG_DATA) public data: any,
+     private _dialogRef: MatDialogRef<PpeAddEditComponent>,
+     private _coreService: CoreService
+
+    )
   {
-    let bodyData={
-      'label': this.label,
-      'category': this.category,
-      'type': this.type,
-      'size': this.size,
-      'description': this.description,
-      'status': this.status,
-      'quantity': this.quantity,
-    };
-   
-    this.http.post("http://127.0.0.1:8000/api/save",bodyData).subscribe((resultData: any)=>
-    {
-        console.log(resultData);
-        alert("PPE Registered Successfully")
-        this.getAllEpi();
-        this.label = '';
-        this.category = '';
-        this.type= '';
-        this.size='';
-        this.description='';
-        this.status='';
-        this.quantity=0;
+    this.getAllEpi();
+    this. ppeForm = this._fb.group({
+      label: '',
+      category: '',
+      type: '',
+      size: '',
+      description:'',
+      status: '',
+      quantity: '',     
     });
   }
-
-  UpdateRecords()
-  {
-    let bodyData = {
-      "label" : this.label,
-      "category" : this.category,
-      "type" : this.type,
-      "size" : this.size,
-      "description" :this.description,
-      "status" : this.status,
-      "quantity" : this.quantity,
-    };
-
-    this.http.put("http://127.0.0.1:8000/api/update"+ "/"+ this.currentEpiID,bodyData).subscribe((resultData: any)=>
-    {
-        console.log(resultData);
-        alert("PPE Registered Updated ")
-        this.getAllEpi();
-        this.label = '';
-        this.category = '';
-        this.type='';
-        this.size='';
-        this.description='';
-        this.status='';
-        this.quantity  = 0;
-    });
+ 
+  ngOnInit(): void {
+    this.ppeForm.patchValue(this.data);
   }
-
-  save()
-  {
-    if(this.currentEpiID == '')
-    {
-        this.register();
+ 
+  onFormSubmit() {
+    if (this.ppeForm.valid) {
+      if (this.data) {
+       this.http.put
+          ("http://127.0.0.1:8000/api/update"+ "/"+this.data.id,this.ppeForm.value)
+          .subscribe({
+            next: (val: any) => {
+              this._coreService.openSnackBar('Employee detail updated!');
+              this._dialogRef.close(true);
+            },
+            error: (err: any) => {
+              console.error(err);
+            },
+          });
+      } else {
+       this.http.post("http://127.0.0.1:8000/api/save",this.ppeForm.value)
+        .subscribe({
+          next: (val: any) => {
+            this._coreService.openSnackBar('Employee added successfully');
+            this._dialogRef.close(true);
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        });
+      }
     }
-      else
-      {
-       this.UpdateRecords();
-      }      
- 
   }
-  setDelete(data: any)
-  {
-    
-    
-    this.http.delete("http://127.0.0.1:8000/api/delete"+ "/"+ data.id).subscribe((resultData: any)=>
-    {
-        console.log(resultData);
-        alert("PPE Deleted")
-        this.getAllEpi();
-  
-    });
- 
-  }
- 
 }
 
