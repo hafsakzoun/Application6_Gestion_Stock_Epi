@@ -13,6 +13,7 @@ import { PpeStockComponent } from './ppe-stock/ppe-stock.component';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RouterModule,
     MatDialogModule,
     MatFormFieldModule, 
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule
   ]
 })
 export class AdminModule { }
