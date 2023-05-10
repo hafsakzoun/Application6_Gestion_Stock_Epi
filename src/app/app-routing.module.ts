@@ -16,6 +16,7 @@ import { PpeConsultationComponent } from './admin/ppe-consultation/ppe-consultat
 import { PpeRequestComponent } from './admin/ppe-request/ppe-request.component';
 import { RoleComponent } from './public/role/role.component';
 import { LoginadminComponent } from './public/loginadmin/loginadmin.component';
+import { ConsultationUserComponent } from './user/consultation-user/consultation-user.component';
 const routes: Routes = [
   {
     path:'',
@@ -38,11 +39,15 @@ const routes: Routes = [
   {path:'LoginAdmin',component:LoginadminComponent},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent},
-  {path:'user',component:UserComponent,
-  canActivate : [AfterLoginService]},
+  {path:'user',component:UserComponent,children: [
+    {path:'ConsultationUser',component:ConsultationUserComponent},
+
+  ]
+  //,canActivate : [AfterLoginService]
+},
   {path:'login',
-  component:LoginComponent,
- // canActivate : [BeforeLoginService]
+  component:LoginComponent
+  //,canActivate : [BeforeLoginService]
 },
 ];
 
