@@ -17,6 +17,8 @@ import { PpeRequestComponent } from './admin/ppe-request/ppe-request.component';
 import { RoleComponent } from './public/role/role.component';
 import { LoginadminComponent } from './public/loginadmin/loginadmin.component';
 import { ConsultationUserComponent } from './user/consultation-user/consultation-user.component';
+import { ConsultByAreaComponent } from './admin/consult-by-area/consult-by-area.component';
+import { ConsultByPostComponent } from './admin/consult-by-post/consult-by-post.component';
 const routes: Routes = [
   {
     path:'',
@@ -34,6 +36,9 @@ const routes: Routes = [
       {path:'ppeStock',component:PpeStockComponent},
       {path:'ppeConsultation',component: PpeConsultationComponent},
       {path:'ppeRequest',component: PpeRequestComponent},
+      {path:'consult-by-area',component:ConsultByAreaComponent},
+      {path:'consult-by-post',component:ConsultByPostComponent}
+
     ]},
   {path:'support',component:SupportComponent},
   {path:'LoginAdmin',component:LoginadminComponent},

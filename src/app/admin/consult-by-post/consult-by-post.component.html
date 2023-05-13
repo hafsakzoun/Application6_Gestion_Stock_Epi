@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Posts</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Post Name</th>
+        <th>Epis</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Post Name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Epi Label">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Post</button>
+          </form>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let post of posts">
+        <td>{{ post.post_name }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let epi of post.epis">
+              {{ epi.label }}
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Epi Label">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Epi</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+              </form>
+            </li>
+            <li>
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Epi Label">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Epi</button>
+              </form>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

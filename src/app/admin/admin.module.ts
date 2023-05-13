@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; 
 import { AdminComponent } from './admin.component';
 import { HomeComponent } from './home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,6 +15,8 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import { ConsultByAreaComponent } from './consult-by-area/consult-by-area.component';
+import { ConsultByPostComponent } from './consult-by-post/consult-by-post.component';
 
 
 @NgModule({
@@ -23,10 +26,13 @@ import {MatTableModule} from '@angular/material/table';
     PpeRequestComponent,
     PpeConsultationComponent,
     PpeStockComponent,
+    ConsultByAreaComponent,
+    ConsultByPostComponent,
    
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -35,7 +41,8 @@ import {MatTableModule} from '@angular/material/table';
     MatDialogModule,
     MatFormFieldModule, 
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    
   ]
 })
 export class AdminModule { }
