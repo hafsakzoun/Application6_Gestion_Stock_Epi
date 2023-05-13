@@ -1,0 +1,73 @@
+.hero {
+    background-size:cover;
+    padding-left:100px;
+  }
+  .hero-title
+  {
+    font-size: 70px;
+    font-weight: 900;
+    margin-top: 3%;
+    line-height: 90px;
+  }
+  .hero-subtitle
+  {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    margin-bottom: 10px ;
+    margin-right: 10%;
+  }
+  .col-md-6 {
+   width: 90%;
+  }
+.main-title
+{
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 30px; 
+    margin-bottom: 30px;
+}
+
+.container{
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .group {
+    margin-top: 10px;
+  }
+  .row
+  {
+    display: grid;
+  }
+  @media screen and (max-width: 767px) {
+    .group {
+      width: 90%;
+    }
+  }
+
+.btn-orange-moon {
+  background: rgba(233, 131, 0,1); 
+  color: #fff;
+  border-radius: 0% !important;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 20px;
+  width: 380px;
+  text-align: left;
+}
+.glyphicon
+{
+  position:absolute;
+  top:45%;
+  left: 330px;
+}
+.box-part
+{
+  position:relative;
+}
+a{
+  text-decoration: none;
+}

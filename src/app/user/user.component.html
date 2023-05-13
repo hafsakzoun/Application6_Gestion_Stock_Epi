@@ -1,17 +1,21 @@
 <mat-toolbar>
-    <div class="example-button-container">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-    </div>
-    <span class="example-spacer">
-    </span>
+  <div class="example-button-container">
+    <img src="assets/images/logo.jpg" alt="TE Logo" routerLink="/user/userhome">
+   </div>
+   <span class="example-spacer">
+    <p style="padding-left: 40%; padding-top: 10px;"> 
+    <mat-icon style="vertical-align: middle; ">
+      account_circle</mat-icon> Welcome.
+    </p>
+</span>
     <div class="example-button-row">
-      <button mat-flat-button >Support</button>
-      <button mat-flat-button  href="#"(click)="logout($event)" >Logout</button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">   <mat-icon>menu</mat-icon>
+      <a mat-flat-button routerLink="/support" style="vertical-align: middle; text-decoration: none;" >Support</a>
+      <button mat-flat-button  href="#"(click)="logout($event)" style="vertical-align: middle;">Logout</button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" style="vertical-align: middle;"><mat-icon>menu</mat-icon>
       </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Riase PPE Request</button>
-          <button mat-menu-item>PPE Consultation</button>
+             <a routerLink="/user/ppeRequest" mat-menu-item style="text-decoration: none;"> PPE Request</a >
+             <a routerLink="/user/ppeConsultation" mat-menu-item style="text-decoration: none;" >PPE Consultation</a >
         </mat-menu>
   </div>
   </mat-toolbar>
