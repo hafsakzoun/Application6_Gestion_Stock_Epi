@@ -41,12 +41,12 @@
                 <li class="m-3">
                   <form>
                     <div class="form-group">
-                      <select class="form-control" [(ngModel)]="newEpiLabel" [ngModelOptions]="{ standalone: true }">
-                        <option *ngFor="let epi of epis" [value]="epi.label">{{ epi.label }}</option>
+                      <select class="form-control" [(ngModel)]="post.newEpiLabel" [ngModelOptions]="{ standalone: true }">
+                        <option *ngFor="let epi of epis" [value]="epi.label" >{{ epi.label }}</option>
                       </select>
                       
                     </div>
-                    <button (click)="addEpi(post.id)" class="  btn btn-primary m-3">Add PEE</button>
+                    <button (click)="addEpi(post, post.newEpiLabel)" class="  btn btn-primary m-3">Add PEE</button>
                   </form>
                 </li>
               </ul>
