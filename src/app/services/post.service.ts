@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 // post.interface.ts
 
 export interface Post {
@@ -57,4 +58,5 @@ export class PostService {
   deleteEpi(id: number): Observable<Epi> {
     return this.http.delete<Epi>(`${this.baseUrl}/epis/${id}`);
   }
+
 }

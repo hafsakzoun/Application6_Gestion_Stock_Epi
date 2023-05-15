@@ -1,57 +1,59 @@
+<section class="content">
+  <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddPostForm = true">
+    <mat-icon>add_circle</mat-icon> ADD A NEW POST
+  </button>
+</section>
 <div class="container">
+  
+  <form [hidden]="!showAddPostForm">
+    <div class="form-group">
+      <input type="text" class="m-3 form-control" placeholder="Post Name"  [(ngModel)]="newPostName" name="post_name">
+    </div>
+    <button type="submit" class="m-3 btn btn-primary"  (click)="addPost(newPostName)">Add Post</button>
+    <button type="button" class="m-3 btn btn-secondary" (click)="hideAddPostForm()">Hide Form</button>
+  </form>
   <h1>Posts</h1>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Post Name</th>
-        <th>Epis</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <form>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Post Name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Epi Label">
-            </div>
-            <button type="submit" class="btn btn-primary">Add Post</button>
-          </form>
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr *ngFor="let post of posts">
-        <td>{{ post.post_name }}</td>
-        <td>
-          <ul>
-            <li *ngFor="let epi of post.epis">
-              {{ epi.label }}
-              <form>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Epi Label">
-                </div>
-                <button type="submit" class="btn btn-primary">Add Epi</button>
-                <button type="button" class="btn btn-danger">Delete</button>
-              </form>
-            </li>
-            <li>
-              <form>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Epi Label">
-                </div>
-                <button type="submit" class="btn btn-primary">Add Epi</button>
-              </form>
-            </li>
-          </ul>
-        </td>
-        <td>
-          <button type="button" class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="main-body">
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Post Name</th>
+            <th>PEE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td class="m-3">
+              {{ post.post_name }}
+              <button mat-icon-button color="warn" (click)="deletePost(post.id)" class="m-3">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+            <td class="m-3">
+              <ul>
+                <li class="m-3" *ngFor="let epi of post.epis let i = index">
+                  {{ epi.label }}
+                  <button class="m-3" mat-icon-button color="warn" (click)="deleteEpi(post.id, epi.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </li>
+                <li class="m-3">
+                  <form>
+                    <div class="form-group">
+                      <select class="form-control" [(ngModel)]="newEpiLabel" [ngModelOptions]="{ standalone: true }">
+                        <option *ngFor="let epi of epis" [value]="epi.label">{{ epi.label }}</option>
+                      </select>
+                      
+                    </div>
+                    <button (click)="addEpi(post.id)" class="  btn btn-primary m-3">Add PEE</button>
+                  </form>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
