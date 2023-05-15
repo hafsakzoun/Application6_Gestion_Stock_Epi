@@ -59,6 +59,14 @@ newPostName: string = '';
     if (selectedEpi) {
       const epiId = selectedEpi.id;
   
+      // Check if the selected episode already exists in the post's epis array
+      const existingEpi = post.epis.find((epi: Epi)  => epi.id === epiId);
+      if (existingEpi) {
+        // Episode already exists in the post's epis array
+        this.core.openSnackBar('PEE already exists!', 'warning');
+        return;
+      }
+  
       // Perform the necessary logic to add the epi to the post
       // For example, you can make an HTTP request to your API
   
@@ -85,8 +93,14 @@ newPostName: string = '';
     }
   }
   
-  
   addPost(postName: string) {
+    // Check if a post with the same name already exists
+    const existingPost = this.posts.find(post => post.post_name === postName);
+    if (existingPost) {
+      this.core.openSnackBar('Post with the same name already exists!', 'warning');
+      return;
+    }
+  
     const newPost = {
       post_name: postName,
       epis: [],
@@ -109,6 +123,7 @@ newPostName: string = '';
       }
     );
   }
+  
   hideAddPostForm(){
     this.showAddPostForm = false;
   }
