@@ -14,11 +14,6 @@ import { CoreService } from 'src/app/core/core.service';
 })
 export class PpeStockComponent implements OnInit{
 
-  EpisArray : any[] = [];
-  isResultLoaded = false;
-  isUpdateFormActive = false;
- 
-  currentEpiID = "";
 
   displayedColumns: string[] = [
     'id',
@@ -36,12 +31,11 @@ export class PpeStockComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _dialog: MatDialog, 
+  constructor(
+    private _dialog: MatDialog, 
     private http: HttpClient,
     private _coreService: CoreService
-    ) {
-
-  }
+    ) {}
 
   ngOnInit(): void {
     this.getAllEpi();
@@ -58,25 +52,19 @@ export class PpeStockComponent implements OnInit{
     });
   }
 
-  getAllEpi()
-{
-  
-  this.http.get("http://127.0.0.1:8000/api/epis")
-  .subscribe({
-    next: (res) => {
-      this.dataSource = new MatTableDataSource(Object.values(res));
+getAllEpi() {
+  this.http.get("http://127.0.0.1:8000/api/epis").subscribe({
+    next: (res: any) => {
+      const formattedData = res.map((item: any) => ({
+        ...item,
+        status: item.quantity >= 1 ? 'Available' : 'Expired',
+      }));
+      this.dataSource = new MatTableDataSource(formattedData);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     },
     error: console.log,
   });
-
- /* .subscribe((resultData: any)=>
-  {
-      this.isResultLoaded = true;
-      console.log(resultData);
-      this.EpisArray = resultData;
-  });*/
 }
 
 
@@ -112,10 +100,4 @@ openEditForm(data: any) {
     },
   });
 }
-
-  /*****************************************************/
-
-
-
-
 }
