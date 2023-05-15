@@ -53,29 +53,33 @@ newPostName: string = '';
       this.core.openSnackBar('PEE deleted!', 'done');
     });
   }  
-  addEpi(postId: number) {
-    const selectedEpi = this.epis.find(epi => epi.label ===this.newEpiLabel);
-    console.log(this.newEpiLabel);
+  addEpi(post: any, newEpiLabel: string) {
+    const selectedEpi = this.epis.find(epi => epi.label === newEpiLabel);
+  
     if (selectedEpi) {
-      console.log(this.epis);
       const epiId = selectedEpi.id;
+  
+      // Check if the selected episode already exists in the post's epis array
+      const existingEpi = post.epis.find((epi: Epi)  => epi.id === epiId);
+      if (existingEpi) {
+        // Episode already exists in the post's epis array
+        this.core.openSnackBar('PEE already exists!', 'warning');
+        return;
+      }
   
       // Perform the necessary logic to add the epi to the post
       // For example, you can make an HTTP request to your API
   
       this.http
-        .post(`http://127.0.0.1:8000/api/posts/${postId}/epis`, { epiId })
+        .post(`http://127.0.0.1:8000/api/posts/${post.id}/epis`, { epiId })
         .subscribe(
           (resultData: any) => {
             console.log(resultData);
             // Update the post's epis array with the new epi
-            const post = this.posts.find(p => p.id === postId);
-            if (post) {
-              post.epis.push(selectedEpi);
-            }
+            post.epis.push(selectedEpi);
   
-            // Reset the newEpiLabel value
-            this.newEpiLabel = '';
+            // Reset the newEpiLabel value for the post
+            post.newEpiLabel = '';
   
             // Display a success message or perform any other necessary action
             this.core.openSnackBar('PEE added!', 'done');
@@ -88,14 +92,22 @@ newPostName: string = '';
         );
     }
   }
+  
   addPost(postName: string) {
+    // Check if a post with the same name already exists
+    const existingPost = this.posts.find(post => post.post_name === postName);
+    if (existingPost) {
+      this.core.openSnackBar('Post with the same name already exists!', 'warning');
+      return;
+    }
+  
     const newPost = {
       post_name: postName,
       epis: [],
       newEpiLabel: '', // Add the newEpiLabel property for the new post
     };
   
-    this.http.post('http://127.0.0.1:8000/api/posts', newPost).subscribe(
+    this.http.post('http://127.0.0.1:8000/api/posts/store', newPost).subscribe(
       (resultData: any) => {
         console.log(resultData);
         // Add the new post to the posts array
@@ -111,6 +123,7 @@ newPostName: string = '';
       }
     );
   }
+  
   hideAddPostForm(){
     this.showAddPostForm = false;
   }

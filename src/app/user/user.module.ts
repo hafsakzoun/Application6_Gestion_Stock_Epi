@@ -8,11 +8,15 @@ import { RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { ConsultationUserComponent } from './consultation-user/consultation-user.component';
+import { ConsultUserPostComponent } from './consult-user-post/consult-user-post.component';
+import { ConsultUserAreaComponent } from './consult-user-area/consult-user-area.component';
 @NgModule({
   declarations: [
     UserComponent,
     UserhomeComponent,
-    ConsultationUserComponent
+    ConsultationUserComponent,
+    ConsultUserPostComponent,
+    ConsultUserAreaComponent
   ],
   imports: [
     CommonModule,
