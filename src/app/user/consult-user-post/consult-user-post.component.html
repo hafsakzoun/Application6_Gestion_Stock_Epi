@@ -1,0 +1,21 @@
+<div style="display: flex; justify-content: center;">
+    <table>
+      <thead>
+        <tr>
+          <th>Post Name</th>
+          <th>PEE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts">
+          <td>{{ post.post_name }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let epi of post.epis">{{ epi.label }}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

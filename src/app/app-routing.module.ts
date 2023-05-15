@@ -20,6 +20,8 @@ import { UserhomeComponent } from './user/userhome/userhome.component';
 import { ConsultationUserComponent } from './user/consultation-user/consultation-user.component';
 import { ConsultByAreaComponent } from './admin/consult-by-area/consult-by-area.component';
 import { ConsultByPostComponent } from './admin/consult-by-post/consult-by-post.component';
+import { ConsultUserPostComponent } from './user/consult-user-post/consult-user-post.component';
+import { ConsultUserAreaComponent } from './user/consult-user-area/consult-user-area.component';
 const routes: Routes = [
   {
     path:'',
@@ -48,7 +50,10 @@ const routes: Routes = [
   {path:'user',component:UserComponent,
   canActivate : [AfterLoginService],
   children: [
-    {path:'userhome',component:UserhomeComponent}
+    {path:'userhome',component:UserhomeComponent},
+    {path:'userconsult',component:ConsultationUserComponent},
+    {path:'userconsultByPost',component:ConsultUserPostComponent},
+    {path:'userconsultByArea',component:ConsultUserAreaComponent}
   ]
   },
   {path:'user',component:UserComponent,children: [
