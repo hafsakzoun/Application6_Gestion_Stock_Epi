@@ -1,1 +1,21 @@
-<p>consult-user-area works!</p>
+<div style="display: flex; justify-content: center;">
+    <table>
+      <thead>
+        <tr>
+          <th>Area Name</th>
+          <th>PEE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let area of areas">
+          <td>{{ area.area_name }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let epi of area.epis">{{ epi.label }}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

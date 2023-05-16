@@ -1,0 +1,44 @@
+
+  /* Center the table horizontally */
+  .table-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Style the table */
+  table {
+    border-collapse: collapse;
+    width: 80%; /* Adjust the width as desired */
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+  }
+
+  /* Style the table header */
+  th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+  }
+
+  /* Style the table body */
+  td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  /* Alternate row colors in the table body */
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  /* Style the nested unordered list */
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Add spacing between list items */
+  li {
+    margin-bottom: 5px;
+  }
