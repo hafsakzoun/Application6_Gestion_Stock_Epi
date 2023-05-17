@@ -68,7 +68,10 @@ h3{
 }
 
 .card{
+ 
   border-radius: 25px;
+  background-repeat: no-repeat;
+  background-size: cover;
   
 }
 
@@ -112,6 +115,40 @@ i:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.7) 0px 18px 36px -18px inset;
 }
 .card-body{
-  height: 550px; 
+  height: 500px; 
   overflow: auto; cursor: pointer;
+}
+input.m-3.form-control{
+  width: 300px;
+}
+form.ng-untouched.ng-pristine.ng-valid{
+  position: absolute;
+  left:40%;
+}
+p{
+  align-items: center;
+}
+
+
+.main-body.showAddPostForm {
+  position:absolute;
+  margin-top: 300px; /* Adjust the value as needed to create space for the form */
+}
+
+.container.showAddPostForm h1 {
+  display: none; /* Hide the heading when the form is shown */
+}
+.main-body.showAddPostForm .heading {
+  margin-bottom: 100px; /* Adjust the value as needed to create space for the form */
+}
+card-body {
+  /* ...existing styles... */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h3.card-title {
+  text-align: center;
 }

@@ -11,42 +11,43 @@
 
   <form [hidden]="!showAddPostForm">
     <div class="form-group">
-      <input type="text" class="m-3 form-control" placeholder="WORK POSITION Name" [(ngModel)]="newPostName" name="post_name">
+      <input type="text" class="m-1 form-control" placeholder="Work Position Name" [(ngModel)]="newPostName" name="post_name">
     </div>
-    <button type="submit" class="m-3 btn btn-primary" (click)="addPost(newPostName)">Add WORK POSITION</button>
-    <button type="button" class="m-3 btn btn-secondary" (click)="hideAddPostForm()">Hide Form</button>
+    <button type="submit" class="m-1 btn btn-primary" (click)="addPost(newPostName)">Add Work Position</button>
+    <button type="button" class="m-1 btn btn-secondary" (click)="hideAddPostForm()">Hide Form</button>
   </form>
-  <h1>WORK POSITIONS</h1>
-  <div class="main-body">
-    <div class="table-container">
+
+  <div class="main-body"> 
+     
+    <div class="table-container" [class.showAddPostForm]="showAddPostForm">
       <div class="container py-5">
         <div class="row justify-content-center">
+          <h1 style="position: absolute; left: 50%;" [class.showAddPostForm]="showAddPostForm">WORK POSITIONS</h1>
           <div class="col-12 col-lg-4" *ngFor="let post of posts">
             <div class="card box-shadow mx-auto my-5" style="width: 18rem;">
-
               <div class="card-body">
                 <h3 class="card-title">{{ post.post_name }}
-                  <button mat-icon-button color="warn" (click)="deletePost(post.id)" class="m-3">
+                  <button mat-icon-button color="warn" (click)="deletePost(post.id)" class="m-1">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </h3>
                 <hr>
-                <p class="card-text">PEE</p>
+                <p class="card-text">PPE</p>
                 <ul>
-                  <li class="m-3" *ngFor="let epi of post.epis let i = index">
+                  <li class="m-1" *ngFor="let epi of post.epis let i = index">
                     {{ epi.label }}
-                    <button class="m-3" mat-icon-button color="warn" (click)="deleteEpi(post.id, epi.id)">
+                    <button class="m-1" mat-icon-button color="warn" (click)="deleteEpi(post.id, epi.id)">
                       <mat-icon>delete</mat-icon>
                     </button>
                   </li>
-                  <li class="m-3">
+                  <li class="m-1">
                     <form>
                       <div class="form-group">
                         <select class="form-control" [(ngModel)]="post.newEpiLabel" [ngModelOptions]="{ standalone: true }">
                           <option *ngFor="let epi of epis" [value]="epi.label">{{ epi.label }}</option>
                         </select>
                       </div>
-                      <button (click)="addEpi(post, post.newEpiLabel)" class="btn btn-primary m-3">Add PEE</button>
+                      <button (click)="addEpi(post, post.newEpiLabel)" class="btn btn-primary m-1">Add PPE</button>
                     </form>
                   </li>
                 </ul>
