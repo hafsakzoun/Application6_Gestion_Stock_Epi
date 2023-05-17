@@ -1,59 +1,62 @@
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://static.fontawesome.com/css/fontawesome-app.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+
 <section class="content">
   <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddPostForm = true">
-    <mat-icon>add_circle</mat-icon> ADD A NEW POST
+    <mat-icon>add_circle</mat-icon> ADD A NEW WORK POSITION
   </button>
 </section>
 <div class="container">
-  
+
   <form [hidden]="!showAddPostForm">
     <div class="form-group">
-      <input type="text" class="m-3 form-control" placeholder="Post Name"  [(ngModel)]="newPostName" name="post_name">
+      <input type="text" class="m-3 form-control" placeholder="WORK POSITION Name" [(ngModel)]="newPostName" name="post_name">
     </div>
-    <button type="submit" class="m-3 btn btn-primary"  (click)="addPost(newPostName)">Add Post</button>
+    <button type="submit" class="m-3 btn btn-primary" (click)="addPost(newPostName)">Add WORK POSITION</button>
     <button type="button" class="m-3 btn btn-secondary" (click)="hideAddPostForm()">Hide Form</button>
   </form>
-  <h1>Posts</h1>
+  <h1>WORK POSITIONS</h1>
   <div class="main-body">
     <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Post Name</th>
-            <th>PEE</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let post of posts">
-            <td class="m-3">
-              {{ post.post_name }}
-              <button mat-icon-button color="warn" (click)="deletePost(post.id)" class="m-3">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-            <td class="m-3">
-              <ul>
-                <li class="m-3" *ngFor="let epi of post.epis let i = index">
-                  {{ epi.label }}
-                  <button class="m-3" mat-icon-button color="warn" (click)="deleteEpi(post.id, epi.id)">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-4" *ngFor="let post of posts">
+            <div class="card box-shadow mx-auto my-5" style="width: 18rem;">
+
+              <div class="card-body">
+                <h3 class="card-title">{{ post.post_name }}
+                  <button mat-icon-button color="warn" (click)="deletePost(post.id)" class="m-3">
                     <mat-icon>delete</mat-icon>
                   </button>
-                </li>
-                <li class="m-3">
-                  <form>
-                    <div class="form-group">
-                      <select class="form-control" [(ngModel)]="post.newEpiLabel" [ngModelOptions]="{ standalone: true }">
-                        <option *ngFor="let epi of epis" [value]="epi.label" >{{ epi.label }}</option>
-                      </select>
-                      
-                    </div>
-                    <button (click)="addEpi(post, post.newEpiLabel)" class="  btn btn-primary m-3">Add PEE</button>
-                  </form>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                </h3>
+                <hr>
+                <p class="card-text">PEE</p>
+                <ul>
+                  <li class="m-3" *ngFor="let epi of post.epis let i = index">
+                    {{ epi.label }}
+                    <button class="m-3" mat-icon-button color="warn" (click)="deleteEpi(post.id, epi.id)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </li>
+                  <li class="m-3">
+                    <form>
+                      <div class="form-group">
+                        <select class="form-control" [(ngModel)]="post.newEpiLabel" [ngModelOptions]="{ standalone: true }">
+                          <option *ngFor="let epi of epis" [value]="epi.label">{{ epi.label }}</option>
+                        </select>
+                      </div>
+                      <button (click)="addEpi(post, post.newEpiLabel)" class="btn btn-primary m-3">Add PEE</button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

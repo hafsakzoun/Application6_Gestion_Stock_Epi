@@ -1,35 +1,116 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<style>
+  .navbar-default {
+    background-image: url("https://via.placeholder.com/1500x150");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    height: 150px;
+  }
+
+  .navbar-text {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .content {
+    padding-top: 20px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 400px;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-img-top {
+    border-radius: 8px 8px 0 0;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    color: #777;
+    margin-bottom: 20px;
+  }
+
+  .btn-orange-moon {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    border: none;
+  }
+
+  .btn-orange-moon:hover {
+    background-color: darkorange;
+  }
+  .row{
+    margin-left: 170px;
+  }
+</style>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-text"><h1 class="main-title">Consultation</h1></div>
+    </div>
+  </div>
+</nav>
 
 <main class="content">
-
-    <section class="container ">
-            <div class="row">
-                <h1 class="main-title">
-                    Consultation
-                </h1>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-                    <div class="box-part text-center">
-                        
-                        <div class="col">
-                            <a routerLink="/user/userconsultByPost" class="col btn btn-orange-moon">By post 
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
-                    <div class="box-part text-center">
-                        <div class="col">
-                            <a routerLink="/user/userconsultByArea" class="col btn btn-orange-moon">By area
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                        
-                     </div>
-                </div>
-            </div>      
-    </section>
-
+  <section class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="card">
+          <img src="https://via.placeholder.com/300" class="card-img-top" alt="Post Image">
+          <div class="card-body">
+            <h5 class="card-title">By Post</h5>
+            <p class="card-text">This allows you to view PPE information based on individual posts.</p>
+            <a routerLink="/user/userconsultByPost" class="btn btn-orange-moon">Go to Consultation</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="card">
+          <img src="https://via.placeholder.com/300" class="card-img-top" alt="Area Image">
+          <div class="card-body">
+            <h5 class="card-title">By Area</h5>
+            <p class="card-text">This enables you to explore PPE information organized by different areas.</p>
+            <a routerLink="/user/userconsultByArea" class="btn btn-orange-moon">Go to Consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>

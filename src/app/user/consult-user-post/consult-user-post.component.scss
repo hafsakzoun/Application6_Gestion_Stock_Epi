@@ -1,44 +1,87 @@
 
-  /* Center the table horizontally */
+  /*
   .table-container {
     display: flex;
     justify-content: center;
   }
 
-  /* Style the table */
-  table {
+ /* table {
     border-collapse: collapse;
-    width: 80%; /* Adjust the width as desired */
+    width: 80%; 
     font-family: Arial, sans-serif;
     margin-bottom: 20px;
   }
 
-  /* Style the table header */
   th {
     background-color: #f2f2f2;
     padding: 10px;
     text-align: left;
   }
-
-  /* Style the table body */
   td {
     border: 1px solid #ddd;
     padding: 10px;
   }
 
-  /* Alternate row colors in the table body */
   tr:nth-child(even) {
     background-color: #f9f9f9;
   }
 
-  /* Style the nested unordered list */
+  
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
 
-  /* Add spacing between list items */
+  
   li {
     margin-bottom: 5px;
+  }*/
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .card {
+    width: 300px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-header {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  .list-group-item {
+    padding: 5px 10px;
+    border: none;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  h1{
+    padding:2%;
   }

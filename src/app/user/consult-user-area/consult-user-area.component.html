@@ -1,21 +1,15 @@
+<h1>Consultation By Area</h1>
 <div style="display: flex; justify-content: center;">
-    <table>
-      <thead>
-        <tr>
-          <th>Area Name</th>
-          <th>PPE</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let area of areas">
-          <td>{{ area.area_name }}</td>
-          <td>
-            <ul>
-              <li *ngFor="let epi of area.epis">{{ epi.label }}</li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card-container">
+    <div class="card" *ngFor="let area of areas">
+      <div class="card-header">
+        <h5 class="card-title">{{ area.area_name }}</h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let epi of area.epis">{{ epi.label }}</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  
+</div>
