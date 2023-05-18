@@ -30,8 +30,8 @@ const routes: Routes = [
     {path:'',component:RoleComponent},
     //{path:'login',component:LoginComponent},
     {path:'signup',component:SignupComponent,
-  canActivate : [BeforeLoginService]}
-  ]
+  //canActivate : [BeforeLoginService]
+ } ]
 },  
   {path:'admin', component: AdminComponent,
     children: [
