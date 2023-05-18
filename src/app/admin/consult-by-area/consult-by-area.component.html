@@ -1,1 +1,63 @@
-<p>consult-by-area works!</p>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://static.fontawesome.com/css/fontawesome-app.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+
+<section class="content">
+    <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddAreaForm = true">
+      <mat-icon>add_circle</mat-icon> ADD A NEW area
+    </button>
+  </section>
+  <div class="container">
+    
+    <form [hidden]="!showAddAreaForm">
+      <div class="form-group">
+        <input type="text" class="m-3 form-control" placeholder="area Name"  [(ngModel)]="newAreaName" name="area_name">
+      </div>
+      <button type="submit" class="m-3 btn btn-primary"  (click)="addArea(newAreaName)">Add area</button>
+      <button type="button" class="m-3 btn btn-secondary" (click)="hideAddAreaForm()">Hide Form</button>
+    </form>
+    <h1>Areas</h1>
+    <div class="main-body">
+      <div class="table-container">
+        <div class="container py-5">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-4" *ngFor="let area of areas">
+              <div class="card box-shadow mx-auto my-5" style="width: 18rem;">
+                
+                <div class="card-body">
+                  <h3 class="card-title">{{ area.area_name }}
+                  <button mat-icon-button color="warn" (click)="deleteArea(area.id)" class="m-3">
+                    <mat-icon>delete</mat-icon>
+                  </button></h3>
+                  <hr>
+                  <p class="card-text">PPE</p>
+                  <ul>
+                    <li class="m-3" *ngFor="let epi of area.epis let i = index">
+                      {{ epi.label }}
+                      <button class="m-3" mat-icon-button color="warn" (click)="deleteEpi(area.id, epi.id)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </li>
+                    <li class="m-3">
+                      <form>
+                        <div class="form-group">
+                          <select class="form-control" [(ngModel)]="area.newEpiLabel" [ngModelOptions]="{ standalone: true }">
+                            <option *ngFor="let epi of epis" [value]="epi.label">{{ epi.label }}</option>
+                          </select>
+                        </div>
+                        <button (click)="addEpi(area, area.newEpiLabel)" class="btn btn-primary m-3">Add PEE</button>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,15 @@
-<p>consult-user-area works!</p>
+<h1>Consultation By Area</h1>
+<div style="display: flex; justify-content: center;">
+  <div class="card-container">
+    <div class="card" *ngFor="let area of areas">
+      <div class="card-header">
+        <h5 class="card-title">{{ area.area_name }}</h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let epi of area.epis">{{ epi.label }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

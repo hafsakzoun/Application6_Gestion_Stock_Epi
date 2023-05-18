@@ -1,21 +1,15 @@
+<h1>Consultation By WORK POSITION</h1>
 <div style="display: flex; justify-content: center;">
-    <table>
-      <thead>
-        <tr>
-          <th>Post Name</th>
-          <th>PEE</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let post of posts">
-          <td>{{ post.post_name }}</td>
-          <td>
-            <ul>
-              <li *ngFor="let epi of post.epis">{{ epi.label }}</li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card-container">
+    <div class="card" *ngFor="let post of posts">
+      <div class="card-header">
+        <h5 class="card-title">{{ post.post_name }}</h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let epi of post.epis">{{ epi.label }}</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  
+</div>

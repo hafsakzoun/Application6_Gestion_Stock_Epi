@@ -15,6 +15,7 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import { MatSortModule} from '@angular/material/sort'
 import { ConsultByAreaComponent } from './consult-by-area/consult-by-area.component';
 import { ConsultByPostComponent } from './consult-by-post/consult-by-post.component';
 
@@ -42,7 +43,7 @@ import { ConsultByPostComponent } from './consult-by-post/consult-by-post.compon
     MatFormFieldModule, 
     MatPaginatorModule,
     MatTableModule,
-    
+    MatSortModule
   ]
 })
 export class AdminModule { }
