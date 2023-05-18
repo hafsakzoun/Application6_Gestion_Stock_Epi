@@ -1,0 +1,66 @@
+<div mat-dialog-title>
+    <h1 style="text-align: center;"> PPE Request Form</h1>
+</div>
+<form [formGroup]="RequestForm" >
+    <div mat-dialog-content >
+       <div class="container">
+            <mat-form-field appearance="outline">
+                <mat-label>SAP Plant</mat-label>
+                <mat-select formControlName="SAP">
+                    <mat-option *ngFor="let val of SAP " [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Full name</mat-label>
+                <input matInput type="text" placeholder="Enter your full name" formControlName="name">
+            </mat-form-field>
+        </div>
+        <div class="container">
+            <mat-form-field appearance="outline">
+                <mat-label>TE ID</mat-label>
+                <input matInput placeholder="Enter your TE ID" formControlName="TEID">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Departement</mat-label>
+                <mat-select formControlName="Departement">
+                    <mat-option *ngFor="let val of Department" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> 
+        </div>
+        <div class="ppeForm">
+            <h2>PPE Details </h2>
+          <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>PPE</mat-label>
+                <mat-select formControlName="PPE" >
+                    <mat-option *ngFor="let epi of epis" [value]="epi.label">{{ epi.label }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> 
+        </div>
+            <div class="container" *ngIf="RequestForm.controls['PPE'].value">
+            <mat-form-field appearance="outline">
+                <mat-label>Size</mat-label>
+                <mat-select formControlName="size"  >
+                    <mat-option *ngFor="let epi of epis" [value]="epi.size">{{ epi.size }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> 
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input matInput placeholder="Ex. 4" type="number" formControlName="Quantity">
+            </mat-form-field>
+        </div>
+    </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+</form>
+

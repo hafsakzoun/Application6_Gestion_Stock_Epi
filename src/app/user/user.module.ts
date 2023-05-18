@@ -10,13 +10,26 @@ import { UserhomeComponent } from './userhome/userhome.component';
 import { ConsultationUserComponent } from './consultation-user/consultation-user.component';
 import { ConsultUserPostComponent } from './consult-user-post/consult-user-post.component';
 import { ConsultUserAreaComponent } from './consult-user-area/consult-user-area.component';
+import { RequestComponent } from './request/request.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
+import { RequestFormComponent } from './request-form/request-form.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
 @NgModule({
   declarations: [
     UserComponent,
     UserhomeComponent,
     ConsultationUserComponent,
     ConsultUserPostComponent,
-    ConsultUserAreaComponent
+    ConsultUserAreaComponent,
+    RequestComponent,
+    RequestFormComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +38,13 @@ import { ConsultUserAreaComponent } from './consult-user-area/consult-user-area.
     MatButtonModule,
     MatMenuModule,
     RouterModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule
+   
   ]
 })
 export class UserModule { }
