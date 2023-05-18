@@ -22,6 +22,8 @@ import { ConsultByAreaComponent } from './admin/consult-by-area/consult-by-area.
 import { ConsultByPostComponent } from './admin/consult-by-post/consult-by-post.component';
 import { ConsultUserPostComponent } from './user/consult-user-post/consult-user-post.component';
 import { ConsultUserAreaComponent } from './user/consult-user-area/consult-user-area.component';
+import { RequestComponent } from './user/request/request.component';
+
 const routes: Routes = [
   {
     path:'',
@@ -40,7 +42,8 @@ const routes: Routes = [
       {path:'ppeConsultation',component: PpeConsultationComponent},
       {path:'ppeRequest',component: PpeRequestComponent},
       {path:'consult-by-area',component:ConsultByAreaComponent},
-      {path:'consult-by-post',component:ConsultByPostComponent}
+      {path:'consult-by-post',component:ConsultByPostComponent},
+      
 
     ]},
   {path:'support',component:SupportComponent},
@@ -58,6 +61,7 @@ const routes: Routes = [
   },
   {path:'user',component:UserComponent,children: [
     {path:'ConsultationUser',component:ConsultationUserComponent},
+    {path:'PPERequest',component:RequestComponent}
 
   ]
   //,canActivate : [AfterLoginService]
