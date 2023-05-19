@@ -1,13 +1,13 @@
 <div mat-dialog-title>
     <h1 style="text-align: center;"> PPE Request Form</h1>
 </div>
-<form [formGroup]="RequestForm" >
+<form [formGroup]="RequestForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content >
        <div class="container">
             <mat-form-field appearance="outline">
                 <mat-label>Cost Center</mat-label>
                 <mat-select formControlName="cost_centre">
-                    <mat-option  *ngFor="let val of cost_centres" [value]="val.cost_centre_name">{{ val.cost_centre_name}}
+                    <mat-option  *ngFor="let val of cost_centre" [value]="val.cost_centre_name">{{ val.cost_centre_name}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -36,24 +36,24 @@
             <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>PPE</mat-label>
-                <mat-select formControlName="PPE" >
+                <mat-select formControlName="ppe_label" >
                     <mat-option *ngFor="let epiKey of episKeys()" [value]="epiKey">{{ epiKey }}
                 </mat-option>
                 </mat-select>
             </mat-form-field> 
             </div>
-            <div class="row" *ngIf="RequestForm.controls['PPE'].value && isAnyEpiNull()">
+            <div class="row" *ngIf="RequestForm.controls['ppe_label'].value && isAnyEpiNull()">
                 <mat-form-field appearance="outline"  >
                 <mat-label>Size</mat-label>
-                <mat-select formControlName="size">
-                    <mat-option *ngFor="let epi of epis[RequestForm.controls['PPE'].value] | keyvalue" [value]="epi.key" >{{ epi.value}}</mat-option>
+                <mat-select formControlName="ppe_size">
+                    <mat-option *ngFor="let epi of epis[RequestForm.controls['ppe_label'].value] | keyvalue" [value]="epi.key" >{{ epi.value}}</mat-option>
                 </mat-select>
                 </mat-form-field>
             </div>
             <div class="row">
                 <mat-form-field appearance="outline">
                     <mat-label>Quantity</mat-label>
-                    <input matInput placeholder="Ex. 4" type="number" formControlName="Quantity">
+                    <input matInput placeholder="Ex. 4" type="number" formControlName="RequestedQt">
                 </mat-form-field>
             </div>
         </div>

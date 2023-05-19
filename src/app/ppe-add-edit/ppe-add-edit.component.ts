@@ -11,7 +11,6 @@ import { CoreService } from '../core/core.service';
   styleUrls: ['./ppe-add-edit.component.scss']
 })
 export class PpeAddEditComponent  implements OnInit {
- 
   ppeForm: FormGroup;
  
   constructor(
@@ -21,7 +20,7 @@ export class PpeAddEditComponent  implements OnInit {
     private _dialogRef: MatDialogRef<PpeAddEditComponent>,
     private _coreService: CoreService
 
-    )
+  )
   {
     this. ppeForm = this._fb.group({
       label: '',

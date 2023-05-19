@@ -2,6 +2,8 @@ import { Component, Inject ,OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CoreService } from 'src/app/core/core.service';
+
 
 @Component({
   selector: 'app-request-form',
@@ -28,7 +30,7 @@ export class RequestFormComponent implements OnInit {
   ];
 
   epis: any[] = [];
-  cost_centres: any[] = [];
+  cost_centre: any[] = [];
   size: string[] = [];
   selectedEpiSizes: string[] = [];
   ppeForms: FormGroup[] = [];
@@ -38,20 +40,53 @@ export class RequestFormComponent implements OnInit {
     private _fb: FormBuilder,
     private _dialogRef: MatDialogRef<RequestFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private _coreService: CoreService
   ) {
     this.RequestForm = this._fb.group({
       cost_centre: '',
       name: '',
       TEID: '',
       Department: '',
-      PPE: '',
-      size: '',
-      Quantity: '',
+      ppe_label: '',
+      ppe_size: '',
+      RequestedQt: '',
     });
   }
+
+  ngOnInit() {
+    // Retrieve EPIs from the server and assign the response to the 'epis' array
+    this.getEpis().subscribe(response => {
+      this.epis = response;
+      console.log(this.epis);
+    });
+    // Retrieve cost centers from the server and assign the response to the 'cost_centres' array
+    this.getCostCenters().subscribe(data => {
+      this.cost_centre = data;
+    });
+
+    this.RequestForm.patchValue(this.data);
+  }
+  onFormSubmit() {
+    if (this.RequestForm.valid) {
+
+       this.http.post("http://127.0.0.1:8000/api/Requests/save",this.RequestForm.value)
+        .subscribe({
+          next: (_val: any) => {
+            this._coreService.openSnackBar('Request added successfully');
+            this._dialogRef.close(true);
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        });
+    }
+  }
+
+  /*
   removePPEForm(index: number) {
     this.ppeForms.splice(index, 1);
-  }
+  }*/
+
   // Method to retrieve EPIs from the server
   getEpis() {
     return this.http.get<any[]>('http://127.0.0.1:8000/api/LabelSizes');
@@ -65,19 +100,9 @@ export class RequestFormComponent implements OnInit {
     return Object.keys(this.epis);
   }
   isAnyEpiNull(): boolean {
-    const selectedEpi = this.RequestForm.controls['PPE'].value;
+    const selectedEpi = this.RequestForm.controls['ppe_label'].value;
     return selectedEpi && this.epis[selectedEpi]?.some((epi: null) => epi !== null);
   }
-  ngOnInit() {
-    // Retrieve EPIs from the server and assign the response to the 'epis' array
-    this.getEpis().subscribe(response => {
-      this.epis = response;
-      console.log(this.epis);
-    });
-    // Retrieve cost centers from the server and assign the response to the 'cost_centres' array
-    this.getCostCenters().subscribe(data => {
-      this.cost_centres = data;
-    });
-  }
+ 
 
 }
