@@ -18,8 +18,6 @@ export class PpeStockComponent implements OnInit{
   displayedColumns: string[] = [
     'id',
     'label',
-    'category',
-    'type',
     'size',
     'description',
     'status',
