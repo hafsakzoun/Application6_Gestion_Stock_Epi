@@ -12,6 +12,7 @@ import { Epi } from 'src/app/services/post.service';
 export class ConsultByPostComponent {
   posts: any[]= [];
   epis:any[]= [];
+  EpisLabels:any[]= [];
   selectedEpi: any;
   newEpiLabel: string = '';
   showAddPostForm = false;
@@ -29,6 +30,9 @@ newPostName: string = '';
     this.getEpis().subscribe(data => {
       this.epis = data;
     });
+    this.getEpisLabels().subscribe(data => {
+      this.EpisLabels = data;
+    });
   }
   
   
@@ -37,6 +41,9 @@ newPostName: string = '';
   }
   getEpis(){
     return this.http.get<any[]>('http://127.0.0.1:8000/api/epis');
+  }
+  getEpisLabels(){
+    return this.http.get<any[]>('http://127.0.0.1:8000/api/UniqueLabels');
   }
   deletePost(id: number) {
     this.http.delete("http://127.0.0.1:8000/api/deletePost/" + id).subscribe((resultData: any) => {
