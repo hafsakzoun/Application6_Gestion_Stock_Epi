@@ -52,7 +52,6 @@ export class RequestFormComponent implements OnInit {
   removePPEForm(index: number) {
     this.ppeForms.splice(index, 1);
   }
-
   // Method to retrieve EPIs from the server
   getEpis() {
     return this.http.get<any[]>('http://127.0.0.1:8000/api/LabelSizes');
@@ -65,12 +64,10 @@ export class RequestFormComponent implements OnInit {
   episKeys(){
     return Object.keys(this.epis);
   }
-  
   isAnyEpiNull(): boolean {
     const selectedEpi = this.RequestForm.controls['PPE'].value;
     return selectedEpi && this.epis[selectedEpi]?.some((epi: null) => epi !== null);
   }
-  
   ngOnInit() {
     // Retrieve EPIs from the server and assign the response to the 'epis' array
     this.getEpis().subscribe(response => {
