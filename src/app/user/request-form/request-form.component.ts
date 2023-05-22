@@ -13,6 +13,12 @@ import { CoreService } from 'src/app/core/core.service';
 export class RequestFormComponent implements OnInit {
   RequestForm: FormGroup;
 
+  epis: any[] = [];
+  cost_centre: any[] = [];
+  size: string[] = [];
+  selectedEpiSizes: string[] = [];
+  ppeForms: FormGroup[] = [];
+
   Department: string[] = [
     'IT',
     'Business',
@@ -23,17 +29,13 @@ export class RequestFormComponent implements OnInit {
     'HSE',
     'HR',
     'Medical center',
-    'maintenance',
+    'Maintenance',
     'Production',
     'Warehouse',
     'Supply Chain',
   ];
 
-  epis: any[] = [];
-  cost_centre: any[] = [];
-  size: string[] = [];
-  selectedEpiSizes: string[] = [];
-  ppeForms: FormGroup[] = [];
+  
 
   constructor(
     private http: HttpClient,
@@ -54,6 +56,8 @@ export class RequestFormComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.RequestForm.patchValue(this.data);
     // Retrieve EPIs from the server and assign the response to the 'epis' array
     this.getEpis().subscribe(response => {
       this.epis = response;
@@ -64,15 +68,12 @@ export class RequestFormComponent implements OnInit {
       this.cost_centre = data;
     });
 
-    this.RequestForm.patchValue(this.data);
   }
   onFormSubmit() {
     if (this.RequestForm.valid) {
-
-       this.http.post("http://127.0.0.1:8000/api/Requests/save",this.RequestForm.value)
-        .subscribe({
-          next: (_val: any) => {
-            this._coreService.openSnackBar('Request added successfully');
+        this.http.post("http://127.0.0.1:8000/api/Requests/save",this.RequestForm.value).subscribe({
+          next: (val: any) => {
+            this._coreService.openSnackBar('Request sent successfully');
             this._dialogRef.close(true);
           },
           error: (err: any) => {
