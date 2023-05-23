@@ -16,7 +16,7 @@ export class ConsultByPostComponent {
   selectedEpi: any;
   newEpiLabel: string = '';
   showAddPostForm = false;
-newPostName: string = '';
+  newPostName: string = '';
 
   
   constructor(private http: HttpClient, private core:CoreService ) {
@@ -73,10 +73,7 @@ newPostName: string = '';
         this.core.openSnackBar('PEE already exists!', 'warning');
         return;
       }
-  
-      // Perform the necessary logic to add the epi to the post
-      // For example, you can make an HTTP request to your API
-  
+      
       this.http
         .post(`http://127.0.0.1:8000/api/posts/${post.id}/epis`, { epiId })
         .subscribe(
