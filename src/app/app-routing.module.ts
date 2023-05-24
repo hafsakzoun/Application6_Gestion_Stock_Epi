@@ -23,52 +23,65 @@ import { ConsultByPostComponent } from './admin/consult-by-post/consult-by-post.
 import { ConsultUserPostComponent } from './user/consult-user-post/consult-user-post.component';
 import { ConsultUserAreaComponent } from './user/consult-user-area/consult-user-area.component';
 import { RequestComponent } from './user/request/request.component';
-
+import { GuardService } from './services/guard.service';
 const routes: Routes = [
   {
     path:'',
     component:PublicComponent,
   children:[
-    {path:'',component:RoleComponent},
-    //{path:'login',component:LoginComponent},
+    {path:'',component:RoleComponent,
+    canActivate : [BeforeLoginService]},
     {path:'signup',component:SignupComponent,
-  //canActivate : [BeforeLoginService]
+  canActivate : [BeforeLoginService]
  } ]
 },  
   {path:'admin', component: AdminComponent,
     children: [
-      {path:'home',component:HomeComponent},
-      {path:'ppeStock',component:PpeStockComponent},
-      {path:'ppeConsultation',component: PpeConsultationComponent},
-      {path:'ppeRequest',component: PpeRequestComponent},
-      {path:'consult-by-area',component:ConsultByAreaComponent},
-      {path:'consult-by-post',component:ConsultByPostComponent},
+      {path:'home',component:HomeComponent,
+       canActivate: [GuardService]},
+      {path:'ppeStock',component:PpeStockComponent,
+       canActivate: [GuardService]},
+      {path:'ppeConsultation',component: PpeConsultationComponent,
+       canActivate: [GuardService]},
+      {path:'ppeRequest',component: PpeRequestComponent,
+      canActivate: [GuardService]},
+      {path:'consult-by-area',component:ConsultByAreaComponent,
+      canActivate: [GuardService]},
+      {path:'consult-by-post',component:ConsultByPostComponent,
+      canActivate: [GuardService]},
       
 
     ]},
   {path:'support',component:SupportComponent},
-  {path:'LoginAdmin',component:LoginadminComponent},
+  {path:'LoginAdmin',component:LoginadminComponent,
+  canActivate : [BeforeLoginService]},
   {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent},
   {path:'user',component:UserComponent,
   canActivate : [AfterLoginService],
   children: [
-    {path:'userhome',component:UserhomeComponent},
-    {path:'userconsult',component:ConsultationUserComponent},
-    {path:'userconsultByPost',component:ConsultUserPostComponent},
-    {path:'userconsultByArea',component:ConsultUserAreaComponent}
+    {path:'userhome',component:UserhomeComponent,
+    canActivate : [AfterLoginService]},
+    {path:'userconsult',component:ConsultationUserComponent,
+    canActivate : [AfterLoginService]},
+    {path:'userconsultByPost',component:ConsultUserPostComponent,
+    canActivate : [AfterLoginService]},
+    {path:'userconsultByArea',component:ConsultUserAreaComponent,
+    canActivate : [AfterLoginService]}
   ]
   },
   {path:'user',component:UserComponent,children: [
-    {path:'ConsultationUser',component:ConsultationUserComponent},
-    {path:'PPERequest',component:RequestComponent}
+    {path:'ConsultationUser',component:ConsultationUserComponent,
+    canActivate : [AfterLoginService]},
+    {path:'PPERequest',component:RequestComponent,
+    canActivate : [AfterLoginService]}
 
   ]
   //,canActivate : [AfterLoginService]
 },
   {path:'login',
-  component:LoginComponent
-  //,canActivate : [BeforeLoginService]
+  component:LoginComponent,
+  canActivate : [BeforeLoginService]
 },
 ];
 

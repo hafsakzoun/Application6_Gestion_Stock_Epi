@@ -19,17 +19,17 @@ export class TokenService {
   remove(){
     return localStorage.removeItem('token');
   }
-  isValid(){
+  isValid() {
     const token = this.get();
-    if(token)
-    {
-      const payload =this.payload(token);
-      if(payload){
-        return (payload.iss==="http://127.0.0.1:8000/api/login")?true:false;
+    if (token) {
+      const payload = this.payload(token);
+      if (payload) {
+        return payload.iss === "http://127.0.0.1:8000/api/login" || payload.iss === "http://127.0.0.1:8000/api/loginAdmin";
       }
     }
     return false;
   }
+  
   payload(token:any){
     const payload = token.split('.')[1];
     return this.decode(payload);
@@ -40,5 +40,25 @@ export class TokenService {
   }
   loggedIn(){
     return this.isValid();
+  }
+  isAdmin() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      if (payload) {
+        return payload.iss === 'http://127.0.0.1:8000/api/loginAdmin';
+      }
+    }
+    return false;
+  }
+  isUser() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      if (payload) {
+        return payload.iss === 'http://127.0.0.1:8000/api/login';
+      }
+    }
+    return false;
   }
 }
