@@ -22,6 +22,7 @@ export class PpeStockComponent implements OnInit{
     'description',
     'status',
     'quantity',
+    'image',
     'action',
   ];
   dataSource!: MatTableDataSource<any>;

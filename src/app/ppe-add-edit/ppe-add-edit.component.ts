@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from '../core/core.service';
 
-
 @Component({
   selector: 'app-ppe-add-edit',
   templateUrl: './ppe-add-edit.component.html',
@@ -29,13 +28,16 @@ export class PpeAddEditComponent  implements OnInit {
       size: '',
       description:'',
       status: '',
-      quantity: '',     
+      quantity: '', 
+      image:''    
     });
   }
  
   ngOnInit(): void {
     this.ppeForm.patchValue(this.data);
   }
+
+  
  
   onFormSubmit() {
     if (this.ppeForm.valid) {
