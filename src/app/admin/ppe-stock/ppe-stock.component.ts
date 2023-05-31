@@ -81,7 +81,7 @@ setDelete(id: number)
   this.http.delete("http://127.0.0.1:8000/api/delete"+ "/"+ id).subscribe((resultData: any)=>
   {
       console.log(resultData);
-      this._coreService.openSnackBar('Employee deleted!', 'done');
+      this._coreService.openSnackBar('PPE deleted!', 'done');
       this.getAllEpi();
   });
 }
