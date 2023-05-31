@@ -23,8 +23,6 @@ export class PpeAddEditComponent  implements OnInit {
   {
     this. ppeForm = this._fb.group({
       label: '',
-      category: '',
-      type: '',
       size: '',
       description:'',
       status: '',
@@ -36,7 +34,16 @@ export class PpeAddEditComponent  implements OnInit {
   ngOnInit(): void {
     this.ppeForm.patchValue(this.data);
   }
+  imageData: string | ArrayBuffer | null = null;
 
+  onImageUpload(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageData = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
   
  
   onFormSubmit() {
