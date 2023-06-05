@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from 'src/app/core/core.service';
+import { EmailService } from 'src/app/services/email.service';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class RequestFormComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private _fb: FormBuilder,
+    private emailService: EmailService,
     private _dialogRef: MatDialogRef<RequestFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _coreService: CoreService
@@ -71,15 +73,26 @@ export class RequestFormComponent implements OnInit {
   }
   onFormSubmit() {
     if (this.RequestForm.valid) {
-        this.http.post("http://127.0.0.1:8000/api/Requests/save",this.RequestForm.value).subscribe({
-          next: (val: any) => {
-            this._coreService.openSnackBar('Request sent successfully');
-            this._dialogRef.close(true);
-          },
-          error: (err: any) => {
-            console.error(err);
-          },
-        });
+      this.http.post("http://127.0.0.1:8000/api/Requests/save", this.RequestForm.value).subscribe({
+        next: (val: any) => {
+          // Send email
+          const costCentre = this.RequestForm.controls['cost_centre'].value;
+          const requestDetails = this.RequestForm.value;
+          this.emailService.SendEmail(costCentre, requestDetails).subscribe(
+            () => {
+              this._coreService.openSnackBar('Request sent successfully');
+              this._dialogRef.close(true);
+            },
+            (err: any) => {
+              console.error(err);
+              this._coreService.openSnackBar('Failed to send email');
+            }
+          );
+        },
+        error: (err: any) => {
+          console.error(err);
+        },
+      });
     }
   }
 
