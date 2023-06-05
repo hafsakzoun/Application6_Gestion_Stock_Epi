@@ -1,18 +1,26 @@
-<main class="content"  >
+<main class="content" style="background-image: url('assets/images/Stock.jpg')">
 
 <div class="main-body">
+
   <div class="container"> 
-    <div class="search"> 
+    <h1>PPE Stock</h1>
       <div class="row"> 
         <div>
-           <div class="search-2"> <i class='bx bxs-map' ></i> <input class="search-2" matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
-              <button mat-flat-button  style="vertical-align: middle;" (click)="openAddEditPPEForm()" class="addBtn"> <mat-icon>add_circle</mat-icon> ADD PPE </button>
-           </div> 
+          <div class="search-box">
+            <button class="btn-search"><mat-icon>search</mat-icon>
+            </button>
+            <input  class="input-search" placeholder="Type to Search..." matInput (keyup)="applyFilter($event)"  #input>
+          </div>
+          <div class="search-box">
+            <button mat-flat-button  style="vertical-align: middle;" (click)="openAddEditPPEForm()" class="addBtn"> <mat-icon>add_circle</mat-icon> ADD PPE </button>
+
+          </div>
+        </div>
+         
         </div> 
-        </div> 
-      </div> 
-    
+  
   <div class="table-container">
+
         <table mat-table [dataSource]="dataSource" matSort>
     
           <!-- ID Column -->
