@@ -1,20 +1,65 @@
 .example-card {
     max-width: 400px;
   }
-  
+  body{
+    background: linear-gradient(rgba(233, 131, 0,1) 65%,rgba(80,70,0,1));
+
+  }
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-.container{
+ 
+  .container {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-        display: flex;
-        mat-card{
-             
-             margin-left:20px
-        }
-}  
+    display: flex;
+    flex-direction: row; /* Set flex-direction to row */
+    justify-content: center; /* Center the cards horizontally */
+  }
+  
+  mat-card {
+    margin: 0 30px; /* Add some spacing between the cards */
+  }
+
+.example-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.logo img {
+  width: 200px;
+  height: 100px;
+  margin-left: 50px;
+}
+
+.welcome {
+  font-size: 24px;
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+}
+.role-selection {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.role-text {
+  color: white;
+}
+.example-card{
+  background:transparent;
+  
+}
+mat-card-title{
+  color: white;
+ 
+}
+
+.card-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

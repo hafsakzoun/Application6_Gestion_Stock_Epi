@@ -107,3 +107,24 @@ a
     top:25%;
     right: 25%;
 }
+.back-button button {
+    background-color: #285a6e;
+    border-color: #285a6e;
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .back-button button:hover {
+    background-color: #234755;
+    border-color: #234755;
+  }
+  
+  .back-button button:focus {
+    outline: none;
+  }
+  .back-button{
+    margin-left: 5%;
+ }
