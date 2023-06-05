@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from '../core/core.service';
 
-
 @Component({
   selector: 'app-ppe-add-edit',
   templateUrl: './ppe-add-edit.component.html',
@@ -24,18 +23,28 @@ export class PpeAddEditComponent  implements OnInit {
   {
     this. ppeForm = this._fb.group({
       label: '',
-      category: '',
-      type: '',
       size: '',
       description:'',
       status: '',
-      quantity: '',     
+      quantity: '', 
+      image:''    
     });
   }
  
   ngOnInit(): void {
     this.ppeForm.patchValue(this.data);
   }
+  imageData: string | ArrayBuffer | null = null;
+
+  onImageUpload(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageData = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  
  
   onFormSubmit() {
     if (this.ppeForm.valid) {
