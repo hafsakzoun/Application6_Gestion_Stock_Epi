@@ -1,1 +1,61 @@
-<p>ppe-request works!</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="content" style="background-image: url('assets/images/request.jpeg');">
+<div class="container">
+    <div class="row">
+
+        
+            <div class="table-container">
+                    <table mat-table [dataSource]="dataSource" matSort>
+                      <!-- ID Column -->
+                      <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                      </ng-container>
+                      <!-- Progress Column -->
+                      <ng-container matColumnDef="cost_centre">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cost Center </th>
+                        <td mat-cell *matCellDef="let row"> {{row.cost_centre}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Full name</th>
+                        <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="TEID">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> TE ID </th>
+                        <td mat-cell *matCellDef="let row"> {{row.TEID}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="Department">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Department}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="ppe_label">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PPE </th>
+                        <td mat-cell *matCellDef="let row"> {{row.ppe_label}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="ppe_size">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Size</th>
+                        <td mat-cell *matCellDef="let row"> {{row.ppe_size}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="RequestedQt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity</th>
+                        <td mat-cell *matCellDef="let row"> {{row.RequestedQt}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let row">
+                          <button (click)="approveRequest(row.id)" class="btn btn-primary">Approve</button>
+                          <button (click)="RejectRequest(row.id)" class="btn btn-primary">Reject</button>
+                          <button (click)="DeliverRequest(row.id)" class="btn btn-primary">Deliver</button>
+                        </td>
+                      </ng-container>
+                      
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+            </div>
+    </div> 
+</div>

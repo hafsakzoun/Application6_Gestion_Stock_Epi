@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PublicComponent } from './public/public.component';
-import { EpiscrudComponent } from './episcrud/episcrud.component';
 import { SecureComponent } from './secure/secure.component';
 import { LoginComponent } from './public/login/login.component';
 import { SignupComponent } from './public/signup/signup.component';
@@ -38,9 +37,11 @@ const routes: Routes = [
   {path:'admin', component: AdminComponent,
     children: [
       {path:'home',component:HomeComponent,
-       canActivate: [GuardService]},
+       //canActivate: [GuardService]
+      },
       {path:'ppeStock',component:PpeStockComponent,
-       canActivate: [GuardService]},
+       //canActivate: [GuardService]
+      },
       {path:'ppeConsultation',component: PpeConsultationComponent,
        canActivate: [GuardService]},
       {path:'ppeRequest',component: PpeRequestComponent,
@@ -55,7 +56,6 @@ const routes: Routes = [
   {path:'support',component:SupportComponent},
   {path:'LoginAdmin',component:LoginadminComponent,
   canActivate : [BeforeLoginService]},
-  {path:'episcrud',component:EpiscrudComponent},
   {path:'secure',component:SecureComponent},
   {path:'user',component:UserComponent,
   canActivate : [AfterLoginService],
@@ -77,7 +77,7 @@ const routes: Routes = [
     canActivate : [AfterLoginService]}
 
   ]
-  //,canActivate : [AfterLoginService]
+  ,canActivate : [AfterLoginService]
 },
   {path:'login',
   component:LoginComponent,

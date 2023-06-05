@@ -19,6 +19,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RequestemailComponent } from './requestemail/requestemail.component';
 
 
 
@@ -30,6 +31,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SecureComponent,
     SupportComponent,
     PpeAddEditComponent,
+    RequestemailComponent,
    
   ],
   imports: [
