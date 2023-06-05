@@ -2,21 +2,27 @@
 <link rel='stylesheet' href='https://static.fontawesome.com/css/fontawesome-app.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
 
-<section class="content">
+<section class="content" style="background-image: url('assets/images/request.jpg'); background-size: cover;
+background-repeat: no-repeat;
+background-position: center;">
+    
+ 
+  <div class="container">
+    
+    
+    <h1 class="m-4" style="font-size: 100px; color: white; font-family:'Times New Roman', Times, serif">Areas</h1>
     <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddAreaForm = true">
       <mat-icon>add_circle</mat-icon> ADD A NEW area
     </button>
-  </section>
-  <div class="container">
-    
-    <form [hidden]="!showAddAreaForm">
-      <div class="form-group">
-        <input type="text" class="m-3 form-control" placeholder="area Name"  [(ngModel)]="newAreaName" name="area_name">
-      </div>
-      <button type="submit" class="m-3 btn btn-primary"  (click)="addArea(newAreaName)">Add area</button>
-      <button type="button" class="m-3 btn btn-secondary" (click)="hideAddAreaForm()">Hide Form</button>
-    </form>
-    <h1>Areas</h1>
+    <form class="add_form" [hidden]="!showAddAreaForm">
+      <div class="add-group">
+        <input type="text" class="m-3 form-control area_name" placeholder="area Name"  [(ngModel)]="newAreaName" name="area_name">
+
+      <button type="submit" class="m-3  Btn "  (click)="addArea(newAreaName)">Add area</button>
+      <button type="button" class="m-3  Btn" (click)="hideAddAreaForm()">Hide Form</button>
+    </div>
+    </form>     
+   
     <div class="main-body">
       <div class="table-container">
         <div class="container py-5">
@@ -60,4 +66,4 @@
       </div>
     </div>
   </div>
-  
+   </section>
