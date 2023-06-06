@@ -8,7 +8,7 @@ body {
 }
 
 main.table {
-  width: 75vw;
+  width: 80vw;
   height: 85vh;
   background-color: #fff5;
   backdrop-filter: blur(7px);
@@ -30,7 +30,7 @@ main.table {
 }
 
 .table_body {
-  width: 90%;
+  width: 95%;
   max-height: calc(89% - 1.6rem);
   background-color: #fffb;
   margin: .10rem auto;
@@ -61,7 +61,7 @@ table {
 table, th, td {
   border-collapse: collapse;
   padding: 1rem;
-  text-align: left;
+  text-align:left;
   font-size: 18px;
 }
 
@@ -73,6 +73,7 @@ th {
   text-transform: capitalize;
   font-weight: 500;
   color: rgba(233, 131, 0, 1);
+  text-align: center;
 }
 
 tr:hover {
@@ -236,27 +237,42 @@ tr:nth-child(even) {
 }
 #analytiqueBox1 .titleNumber h6
 {
-  color:#4E73DF;
+  color:#464242;
 }
 #analytiqueBox1:before
 {
-    background:#4E73DF;
+    background:#464242;
 }
 
 #analytiqueBox2 .titleNumber h6
 {
-  color:#1CC88A;
+  color:#0b22ef;
 }
 #analytiqueBox2:before
 {
-    background:#1CC88A;
+    background:#0b22ef;
 }
 
 #analytiqueBox3 .titleNumber h6
 {
-  color:#36B9CC;
+  color:#d12212;
 }
 #analytiqueBox3:before
 {
-    background:#36B9CC;
+    background:#d12212;
+}
+
+#analytiqueBox4 .titleNumber h6
+{
+  color:#26bd04;
+}
+#analytiqueBox4:before
+{
+    background:#26bd04;
+}
+
+.action-buttons{
+  display: flex;
+  gap: 10px;
+
 }
