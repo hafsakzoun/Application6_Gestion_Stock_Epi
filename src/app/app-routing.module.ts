@@ -45,7 +45,8 @@ const routes: Routes = [
       {path:'ppeConsultation',component: PpeConsultationComponent,
        canActivate: [GuardService]},
       {path:'ppeRequest',component: PpeRequestComponent,
-      canActivate: [GuardService]},
+      //canActivate: [GuardService]
+    },
       {path:'consult-by-area',component:ConsultByAreaComponent,
       canActivate: [GuardService]},
       {path:'consult-by-post',component:ConsultByPostComponent,

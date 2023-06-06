@@ -2,13 +2,88 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<body style="background-image: url('assets/images/request.jpeg');">
+<main class="content table" >
+ 
+  <section class="table_header">
 
-<div class="content" style="background-image: url('assets/images/request.jpeg');">
-<div class="container">
     <div class="row">
+          <div class="col-sm-5">
+            <h2>PPE Requests </h2>
+          </div>
+          <div class="col-sm-4" style=" text-align: center;">
+          </div>
+          <div class="col-sm-2" >
+            <div class="search-box">
+              <button class="btn-search"  style="vertical-align: middle;"><mat-icon style="vertical-align: middle;">search</mat-icon></button>
+              <input class="input-search" placeholder="Type to Search..." matInput (keyup)="applyFilter($event)" #input>
+            </div>
+          </div>
+    </div>
 
-        
-            <div class="table-container">
+  </section>
+<section class="ControlPanel">
+  <div class="container mb-3">
+          <div class="row d-flex flex-row justify-content-around  analytiquePanel">
+
+            <div class="col-lg-3 col-md-6 col-12">
+              <div id="analytiqueBox1" class=" row analytiqueBox">
+                <div class="titleNumber col-8">
+                  <h1>10</h1>
+                  <h6 class="text-uppercase">Pending</h6>
+                </div>
+                <div class=" col-4 analytiqueIcon">
+                  <i class='bx bx-spin-hover'></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+              <div id="analytiqueBox2" class=" row analytiqueBox">
+                <div class="titleNumber col-8">
+                  <h1>30</h1>
+                  <h6 class="text-uppercase">Approved</h6>
+                </div>
+                <div  class=" col-4 analytiqueIcon">
+                  <i class='bx bx-check-circle'></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+              <div id="analytiqueBox2" class=" row analytiqueBox">
+                <div class="titleNumber col-8">
+                  <h1>30</h1>
+                  <h6 class="text-uppercase">Rejected</h6>
+                </div>
+                <div  class=" col-4 analytiqueIcon">
+                  <i class='bx bx-check-circle'></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-12">
+              <div id="analytiqueBox3" class=" row analytiqueBox">
+                <div class="titleNumber col-8">
+                  <h1>20</h1>
+                  <h6 class="text-uppercase">Delivred</h6>
+                </div>
+                <div class=" col-4 analytiqueIcon">
+                  <i class='bx bx-rocket' ></i>
+                </div>
+
+              </div>
+
+            </div>
+  </div>
+        </div>
+</section>
+      
+
+<section class="table_body"> 
+    
                     <table mat-table [dataSource]="dataSource" matSort>
                       <!-- ID Column -->
                       <ng-container matColumnDef="id">
@@ -56,6 +131,9 @@
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
-            </div>
-    </div> 
-</div>
+                    <mat-paginator [pageSizeOptions]="[5]" aria-label="Select page of PPE"></mat-paginator>
+
+
+  </section>
+</main>
+</body>
