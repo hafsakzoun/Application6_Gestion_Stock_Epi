@@ -41,9 +41,7 @@
   margin-bottom: 1rem;
 }
 
-.card-text {
-  padding-bottom: 1rem;
-}
+
 
 .card-body {
   height: 350px;
@@ -94,6 +92,9 @@ ul {
   padding-left: 0;
   list-style-type: none;
 }
+ul:hover {
+  color: rgba(233, 131, 0, 1);
+}
 
 li {
   margin-bottom: 0.5rem;
@@ -103,6 +104,7 @@ li {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
+  
 }
 
 .Btn {
