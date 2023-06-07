@@ -2,15 +2,16 @@
 <link rel='stylesheet' href='https://static.fontawesome.com/css/fontawesome-app.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
 
-<section class="content" style="background-image: url('assets/images/request.jpg'); background-size: cover;
+<main class="content" style="background-image: url('assets/images/request.jpg'); background-size: cover;
 background-repeat: no-repeat;
-background-position: center;">
+background-position: center;
+min-height: 650px;">
     
  
   <div class="container">
     
     
-    <h1 class="m-4" style="font-size: 100px; color: white; font-family:'Times New Roman', Times, serif">Areas</h1>
+    <h1 class="m-4" style=" font-size: 100px; color: white; font-family:'Times New Roman', Times, serif">Areas</h1>
     <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddAreaForm = true">
       <mat-icon>add_circle</mat-icon> ADD A NEW area
     </button>
@@ -38,13 +39,13 @@ background-position: center;">
                   <hr>
                   <p class="card-text">PPE</p>
                   <ul>
-                    <li class="m-3" *ngFor="let epi of area.epis let i = index">
+                    <li class="m-2" *ngFor="let epi of area.epis let i = index">
                       {{ epi.label }}
-                      <button class="m-3" mat-icon-button color="warn" (click)="deleteEpi(area.id, epi.id)">
+                      <button class="m-2" mat-icon-button color="warn" (click)="deleteEpi(area.id, epi.id)">
                         <mat-icon>delete</mat-icon>
                       </button>
                     </li>
-                    <li class="m-3">
+                    <li class="m-2">
                       <form>
                         <div class="form-group">
                           <select class="form-control" [(ngModel)]="area.newEpiLabel" [ngModelOptions]="{ standalone: true }">
@@ -66,4 +67,4 @@ background-position: center;">
       </div>
     </div>
   </div>
-   </section>
+</main>

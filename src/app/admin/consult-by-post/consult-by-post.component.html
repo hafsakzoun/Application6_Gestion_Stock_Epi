@@ -2,19 +2,25 @@
 <link rel='stylesheet' href='https://static.fontawesome.com/css/fontawesome-app.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
 
-<section class="content">
+<main class="content" style="background-image: url('assets/images/request.jpg'); background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+min-height: 650px;">
+  
+
+<div class="container">
+
+  <h1 style=" font-size: 100px; color: white; font-family:'Times New Roman', Times, serif">WORK POSITIONS</h1>
   <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddPostForm = true">
     <mat-icon>add_circle</mat-icon> ADD A NEW WORK POSITION
   </button>
-</section>
-<div class="container">
-
-  <form [hidden]="!showAddPostForm">
-    <div class="form-group">
-      <input type="text" class="m-1 form-control" placeholder="Work Position Name" [(ngModel)]="newPostName" name="post_name">
-    </div>
-    <button type="submit" class="m-1 btn btn-primary" (click)="addPost(newPostName)">Add Work Position</button>
-    <button type="button" class="m-1 btn btn-secondary" (click)="hideAddPostForm()">Hide Form</button>
+  <form class="add_form" [hidden]="!showAddPostForm">
+    <div class="add-group">
+      <input type="text" class="m-3 form-control area_name" placeholder="Work Position Name" [(ngModel)]="newPostName" name="post_name">
+    
+    <button type="submit" class="Btn" (click)="addPost(newPostName)">Add Work Position</button>
+    <button type="button" class="Btn" (click)="hideAddPostForm()">Hide Form</button>
+  </div>
   </form>
 
   <div class="main-body"> 
@@ -22,7 +28,7 @@
     <div class="table-container" [class.showAddPostForm]="showAddPostForm">
       <div class="container py-5">
         <div class="row justify-content-center">
-          <h1 style="position: absolute; left: 50%;" [class.showAddPostForm]="showAddPostForm">WORK POSITIONS</h1>
+          
           <div class="col-12 col-lg-4" *ngFor="let post of posts">
             <div class="card box-shadow mx-auto my-5" style="width: 18rem;">
               <div class="card-body">
@@ -61,3 +67,4 @@
     </div>
   </div>
 </div>
+</main>

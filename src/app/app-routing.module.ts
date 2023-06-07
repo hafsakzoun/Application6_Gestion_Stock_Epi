@@ -37,10 +37,10 @@ const routes: Routes = [
   {path:'admin', component: AdminComponent,
     children: [
       {path:'home',component:HomeComponent,
-       //canActivate: [GuardService]
+       canActivate: [GuardService]
       },
       {path:'ppeStock',component:PpeStockComponent,
-       //canActivate: [GuardService]
+       canActivate: [GuardService]
       },
       {path:'ppeConsultation',component: PpeConsultationComponent,
        //canActivate: [GuardService]

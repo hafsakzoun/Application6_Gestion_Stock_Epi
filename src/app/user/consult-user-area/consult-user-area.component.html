@@ -1,7 +1,11 @@
-<h1>Consultation By Area</h1>
-<div style="display: flex; justify-content: center;">
+<main class="content" style="background-image: url('assets/images/request.jpg'); background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+min-height: 650px;">
+    <h1 style=" font-size: 80px; color: white; font-family:'Times New Roman', Times, serif; padding-top: 10% ; padding-bottom: 2%;padding-left: 25%;">Consultation By Area</h1>
+<div class="row justifu-content-center"style="display: flex; ">
   <div class="card-container">
-    <div class="card" *ngFor="let area of areas">
+    <div class="card box-shadow mx-auto my-5" *ngFor="let area of areas">
       <div class="card-header">
         <h5 class="card-title">{{ area.area_name }}</h5>
       </div>
@@ -13,3 +17,4 @@
     </div>
   </div>
 </div>
+</main>
