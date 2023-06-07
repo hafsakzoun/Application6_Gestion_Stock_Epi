@@ -43,14 +43,17 @@ const routes: Routes = [
        //canActivate: [GuardService]
       },
       {path:'ppeConsultation',component: PpeConsultationComponent,
-       canActivate: [GuardService]},
+       //canActivate: [GuardService]
+      },
       {path:'ppeRequest',component: PpeRequestComponent,
       //canActivate: [GuardService]
     },
       {path:'consult-by-area',component:ConsultByAreaComponent,
-      canActivate: [GuardService]},
+      //canActivate: [GuardService]
+    },
       {path:'consult-by-post',component:ConsultByPostComponent,
-      canActivate: [GuardService]},
+      //canActivate: [GuardService]
+    },
       
 
     ]},
