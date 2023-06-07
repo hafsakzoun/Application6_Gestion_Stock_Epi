@@ -24,21 +24,42 @@ export class PpeRequestComponent  implements OnInit{
     'ppe_label',
     'ppe_size',
     'RequestedQt',
-
+    'status',
     'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  pendingRequestCount: any;
+  approvedRequestCount: any;
+  rejectedRequestCount: any;
+  deliveredRequestCount: any;
   constructor(private http: HttpClient, 
     private _dialog: MatDialog,
     private _coreService: CoreService ) {}
     ngOnInit(): void {
-      this.getRequests();
+      this.getPendingRequests();
+      this.countPendingRequests();
+      this.countApprovedRequests();
+      this.countRejectedRequests();
+      this.countDeliveredRequests();
     }
-    getRequests() {
+    getPendingRequests() {
+      this.http.get("http://127.0.0.1:8000/api/Requests/Pending").subscribe({
+        next: (res: any) => {
+          const formattedData = res.map((item: any) => ({
+            ...item,
+          }));
+          this.dataSource = new MatTableDataSource(formattedData);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+        },
+        error: console.log,
+      });
+    }
+
+    getApprovedRequests() {
       this.http.get("http://127.0.0.1:8000/api/Requests/Approved").subscribe({
         next: (res: any) => {
           const formattedData = res.map((item: any) => ({
@@ -52,6 +73,35 @@ export class PpeRequestComponent  implements OnInit{
       });
     }
 
+    getRejectedRequests() {
+      this.http.get("http://127.0.0.1:8000/api/Requests/Rejected").subscribe({
+        next: (res: any) => {
+          const formattedData = res.map((item: any) => ({
+            ...item,
+          }));
+          this.dataSource = new MatTableDataSource(formattedData);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+        },
+        error: console.log,
+      });
+    }
+    
+    getDeliveredRequests() {
+      this.http.get("http://127.0.0.1:8000/api/Requests/Delivered").subscribe({
+        next: (res: any) => {
+          const formattedData = res.map((item: any) => ({
+            ...item,
+          }));
+          this.dataSource = new MatTableDataSource(formattedData);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+        },
+        error: console.log,
+      });
+    }
+
+
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -61,39 +111,103 @@ export class PpeRequestComponent  implements OnInit{
       }
     }
 
-    approveRequest(id: number) {
+    ApproveRequest(id: number) {
       this.http.post("http://127.0.0.1:8000/api/Requests/confirm/" + id, {}).subscribe(
         (resultData: any) => {
-          console.log(resultData);
-          this._coreService.openSnackBar('Request approved!', 'done');
+          if (resultData.status === 'Approved') {
+            console.log(resultData);
+            this._coreService.openSnackBar('Request already approved!', 'warning');
+          } else {
+            console.log(resultData);
+            this._coreService.openSnackBar('Request approved!', 'done');
+          }
         },
         (error: any) => {
           console.error(error);
         }
       );
     }
+    
     RejectRequest(id: number) {
       this.http.post("http://127.0.0.1:8000/api/Requests/reject/" + id, {}).subscribe(
         (resultData: any) => {
-          console.log(resultData);
-          this._coreService.openSnackBar('Request rejected!', 'done');
+          if (resultData && resultData.status === 'Rejected') {
+            console.log(resultData.status);
+            this._coreService.openSnackBar('Request already rejected!', 'warning');
+            this.getRejectedRequests();
+          } else {
+            console.log(resultData);
+            console.log(resultData.name);
+            this._coreService.openSnackBar('Request rejected!', 'done');
+            this.getRejectedRequests();
+          }
+          
         },
         (error: any) => {
           console.error(error);
         }
       );
     }
+    
+    
     DeliverRequest(id: number) {
       this.http.post("http://127.0.0.1:8000/api/Requests/deliver/" + id, {}).subscribe(
         (resultData: any) => {
-          console.log(resultData);
-          this._coreService.openSnackBar('Request delivered!', 'done');
+          if (resultData.status === 'Delivered') {
+            console.log(resultData);
+            this._coreService.openSnackBar('Request already delivered!', 'warning');
+          } else {
+            console.log(resultData);
+            this._coreService.openSnackBar('Request delivered!', 'done');
+          }
         },
         (error: any) => {
           console.error(error);
         }
       );
     }
+
+    countPendingRequests() {
+      this.http
+        .get("http://127.0.0.1:8000/api/Requests/CountPending")
+        .subscribe({
+          next: (res: any) => {
+            this.pendingRequestCount = res.count;
+          },
+          error: console.log,
+        });
+    }
+    countApprovedRequests() {
+      this.http
+        .get("http://127.0.0.1:8000/api/Requests/CountApproved")
+        .subscribe({
+          next: (res: any) => {
+            this.approvedRequestCount = res.count;
+          },
+          error: console.log,
+        });
+    }
+    countRejectedRequests() {
+      this.http
+        .get("http://127.0.0.1:8000/api/Requests/CountRejected")
+        .subscribe({
+          next: (res: any) => {
+            this.rejectedRequestCount = res.count;
+          },
+          error: console.log,
+        });
+    }
+    countDeliveredRequests() {
+      this.http
+        .get("http://127.0.0.1:8000/api/Requests/CountDelivered")
+        .subscribe({
+          next: (res: any) => {
+            this.deliveredRequestCount = res.count;
+          },
+          error: console.log,
+        });
+    }
+
     
 }
 

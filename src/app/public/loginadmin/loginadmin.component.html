@@ -21,10 +21,12 @@
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control " name="password" [(ngModel)]="form.password" required>
-                </div>
-                <div >
-                    <input type="checkbox"> &nbsp; Remember Me
+                    <div class="input-group pw">
+                        <input type="password"style="border: 0; height:37px;" class="form-control " name="password" [(ngModel)]="form.password" required  [type]="hide ? 'password' : 'text'" >
+                        <button   style="height:100%;" mat-icon-button matSuffix  (click)="hide = !hide" [attr.aria-label]="hide ? 'Hide password' : 'Show password'" [attr.aria-pressed]="hide">
+                            <mat-icon class="icon" >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </div>                
                 </div>
                 <button type="submit" class="btn btn-log" [disabled]="!loginForm.valid">Sign in</button>
             </form>

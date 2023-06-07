@@ -49,3 +49,16 @@ h2{
     font-size: large;
     vertical-align: middle;
   }
+
+  .analytiqueIcon i
+{
+  position:relative;
+  top:50px;
+  right:5%;
+  transform:translate(-50%,-50%);
+  font-size: 50px;
+}
+.logos{
+    display: flex;
+    gap: 150px;
+  }

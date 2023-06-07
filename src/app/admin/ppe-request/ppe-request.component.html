@@ -27,10 +27,10 @@
   <div class="container mb-3">
           <div class="row d-flex flex-row justify-content-around  analytiquePanel">
 
-            <div class="col-lg-3 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12" (click)="getPendingRequests()" >
               <div id="analytiqueBox1" class=" row analytiqueBox">
                 <div class="titleNumber col-8">
-                  <h1>10</h1>
+                  <h1>{{ pendingRequestCount }}</h1>
                   <h6 class="text-uppercase">Pending</h6>
                 </div>
                 <div class=" col-4 analytiqueIcon">
@@ -39,10 +39,10 @@
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12" (click)="getApprovedRequests()">
               <div id="analytiqueBox2" class=" row analytiqueBox">
                 <div class="titleNumber col-8">
-                  <h1>30</h1>
+                  <h1>{{ approvedRequestCount }}</h1>
                   <h6 class="text-uppercase">Approved</h6>
                 </div>
                 <div  class=" col-4 analytiqueIcon">
@@ -51,10 +51,10 @@
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12" (click)="getRejectedRequests()">
               <div id="analytiqueBox3" class=" row analytiqueBox">
                 <div class="titleNumber col-8">
-                  <h1>30</h1>
+                  <h1>{{ rejectedRequestCount }}</h1>
                   <h6 class="text-uppercase">Rejected</h6>
                 </div>
                 <div  class=" col-4 analytiqueIcon">
@@ -63,11 +63,11 @@
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-12">
+            <div class="col-lg-3 col-md-6 col-12" (click)="getDeliveredRequests()">
               <div id="analytiqueBox4" class=" row analytiqueBox">
                 <div class="titleNumber col-8">
-                  <h1>20</h1>
-                  <h6 class="text-uppercase">Delivred</h6>
+                  <h1>{{ deliveredRequestCount }}</h1>
+                  <h6 class="text-uppercase">Delivered</h6>
                 </div>
                 <div class=" col-4 analytiqueIcon">
                   <i class='bx bx-rocket' ></i>
@@ -118,10 +118,15 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity</th>
                         <td mat-cell *matCellDef="let row"> {{row.RequestedQt}}</td>
                       </ng-container>
+                      <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+                        <td mat-cell *matCellDef="let row"> {{row.status}}</td>
+                      </ng-container>
+
                       <ng-container matColumnDef="action">
                         <th mat-header-cell *matHeaderCellDef> Action</th>
                         <td mat-cell *matCellDef="let row" class="action-buttons">
-                          <button (click)="approveRequest(row.id)" class="btn btn-primary">Approve</button>
+                          <button (click)="ApproveRequest(row.id)" class="btn btn-primary">Approve</button>
                           <button (click)="RejectRequest(row.id)" class="btn btn-danger">Reject</button>
                           <button (click)="DeliverRequest(row.id)" class="btn btn-success">Deliver</button>
                         </td>
