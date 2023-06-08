@@ -72,28 +72,17 @@ export class RequestFormComponent implements OnInit {
 
   }
   onFormSubmit() {
-    if (this.RequestForm.valid) {
+    if (this.RequestForm.valid)  {
       this.http.post("http://127.0.0.1:8000/api/Requests/save", this.RequestForm.value).subscribe({
-        next: (val: any) => {
-          // Send email
-          const costCentre = this.RequestForm.controls['cost_centre'].value;
-          const requestDetails = this.RequestForm.value;
-          this.emailService.SendEmail(costCentre, requestDetails).subscribe(
-            () => {
-              this._coreService.openSnackBar('Request sent successfully');
-              this._dialogRef.close(true);
-            },
-            (err: any) => {
-              console.error(err);
-              this._coreService.openSnackBar('Failed to send email');
-            }
-          );
-        },
-        error: (err: any) => {
-          console.error(err);
-        },
-      });
-    }
+         next: (_val: any) => {
+           this._coreService.openSnackBar('Request sent successfully');
+           this._dialogRef.close(true);
+         },
+         error: (err: any) => {
+           console.error(err);
+         },
+       });
+     }
   }
 
   /*
