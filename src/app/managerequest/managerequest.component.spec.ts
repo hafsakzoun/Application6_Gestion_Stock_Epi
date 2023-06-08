@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RequestemailComponent } from './requestemail.component';
+import { ManagerequestComponent } from './managerequest.component';
 
-describe('RequestemailComponent', () => {
-  let component: RequestemailComponent;
-  let fixture: ComponentFixture<RequestemailComponent>;
+describe('ManagerequestComponent', () => {
+  let component: ManagerequestComponent;
+  let fixture: ComponentFixture<ManagerequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RequestemailComponent ]
+      declarations: [ ManagerequestComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RequestemailComponent);
+    fixture = TestBed.createComponent(ManagerequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -22,6 +22,8 @@ import { ConsultByPostComponent } from './admin/consult-by-post/consult-by-post.
 import { ConsultUserPostComponent } from './user/consult-user-post/consult-user-post.component';
 import { ConsultUserAreaComponent } from './user/consult-user-area/consult-user-area.component';
 import { RequestComponent } from './user/request/request.component';
+import { ManagerequestComponent } from './managerequest/managerequest.component';
+
 import { GuardService } from './services/guard.service';
 const routes: Routes = [
   {
@@ -37,10 +39,10 @@ const routes: Routes = [
   {path:'admin', component: AdminComponent,
     children: [
       {path:'home',component:HomeComponent,
-       canActivate: [GuardService]
+       //canActivate: [GuardService]
       },
       {path:'ppeStock',component:PpeStockComponent,
-       canActivate: [GuardService]
+       //canActivate: [GuardService]
       },
       {path:'ppeConsultation',component: PpeConsultationComponent,
        //canActivate: [GuardService]
@@ -87,6 +89,11 @@ const routes: Routes = [
   component:LoginComponent,
   canActivate : [BeforeLoginService]
 },
+
+{path:'ManageRequest',
+component:ManagerequestComponent,
+},
+
 ];
 
 @NgModule({

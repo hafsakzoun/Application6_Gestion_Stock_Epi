@@ -19,7 +19,10 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { RequestemailComponent } from './requestemail/requestemail.component';
+import { ManagerequestComponent } from './managerequest/managerequest.component';
+import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -31,7 +34,8 @@ import { RequestemailComponent } from './requestemail/requestemail.component';
     SecureComponent,
     SupportComponent,
     PpeAddEditComponent,
-    RequestemailComponent,
+    ManagerequestComponent,
+    
    
   ],
   imports: [
@@ -51,6 +55,9 @@ import { RequestemailComponent } from './requestemail/requestemail.component';
     MatInputModule,
     MatRadioModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule
     
    
   ],
