@@ -107,7 +107,7 @@ export class ManagerequestComponent implements OnInit{
       this.http.post("http://127.0.0.1:8000/api/Requests/rejectByManager/" + id, {}).subscribe(
         (resultData: any) => {
           console.log(resultData);
-          this._coreService.openSnackBar('Request approved!', 'done');
+          this._coreService.openSnackBar('Request rejected!', 'done');
         },
         (error: any) => {
           console.error(error);
