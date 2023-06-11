@@ -10,7 +10,7 @@ min-height: 650px;">
 
 <div class="container">
 
-  <h1 style=" font-size: 100px; color: white; font-family:'Times New Roman', Times, serif">WORK POSITIONS</h1>
+  <h1 style=" font-size: 75px; color: white; font-family:'Times New Roman', Times, serif; text-shadow: 8px 5px 15px #e98300;" >WORK POSITIONS</h1>
   <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddPostForm = true">
     <mat-icon>add_circle</mat-icon> ADD A NEW WORK POSITION
   </button>
@@ -38,9 +38,10 @@ min-height: 650px;">
                   </button>
                 </h3>
                 <hr>
-                <p class="card-text">PPE</p>
+                <p class="card-text" style="font-size: 18px; font-weight: 400;">PPE permitted to this area :</p>
                 <ul>
                   <li class="m-1" *ngFor="let epi of post.epis let i = index">
+                   <img class="PPEimg"[src]="epi.image">
                     {{ epi.label }}
                     <button class="m-1" mat-icon-button color="warn" (click)="deleteEpi(post.id, epi.id)">
                       <mat-icon>delete</mat-icon>
@@ -49,11 +50,13 @@ min-height: 650px;">
                   <li class="m-1">
                     <form>
                       <div class="form-group">
-                        <select class="form-control" [(ngModel)]="post.newEpiLabel" [ngModelOptions]="{ standalone: true }">
+                        <div class="addPPE">
+                        <select class="form-control" style="height: fit-content;"[(ngModel)]="post.newEpiLabel" [ngModelOptions]="{ standalone: true }">
                           <option *ngFor="let epiL of EpisLabels" [value]="epiL">{{ epiL }}</option>
                         </select>
-                      </div>
-                      <button (click)="addEpi(post, post.newEpiLabel)" class="btn btn-primary m-1">Add PPE</button>
+                      <button (click)="addEpi(post, post.newEpiLabel)" class="btn btn-primary m-3" style="height: fit-content;"><mat-icon> add </mat-icon></button>
+                    </div>
+                  </div>
                     </form>
                   </li>
                 </ul>

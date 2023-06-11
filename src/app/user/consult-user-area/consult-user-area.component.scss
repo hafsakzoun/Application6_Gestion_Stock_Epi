@@ -1,3 +1,7 @@
+.content{
+background-size: cover;
+background-repeat: no-repeat;
+}
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
@@ -19,7 +23,7 @@
 
 .card-header {
   padding: 10px;
-  background-color: #e9ecef;
+  background-color: #e98300;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -31,7 +35,7 @@
 
 .card-title {
   font-weight: bold;
-  color: #2b2b2b;
+  color: #fff;
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 1rem;
@@ -54,9 +58,23 @@
   }
   
   .list-group-item:hover {
-    background-color: #f1f1f1;
+    background-color: #e98300;
+    color:#fff;
     cursor: pointer;
   }
   h1{
     padding:2%;
+    font-size: 60px; 
+    color: white; 
+    font-family:'Times New Roman', Times, serif; 
+    padding-top: 5% ; 
+    text-shadow: 8px 5px 15px #e98300;
+    text-align: center;
+  }
+  .PPEimg{
+    width: 50px;
+    height: 50px;
+    margin-right: .5rem;
+    border-radius: 50%;
+    vertical-align: middle;
   }

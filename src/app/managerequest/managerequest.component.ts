@@ -25,6 +25,7 @@ export class ManagerequestComponent implements OnInit{
     'ppe_size',
     'RequestedQt',
     'status',
+    'createdDate',
     'action',
   ];
   dataSource!: MatTableDataSource<any>;
@@ -92,22 +93,32 @@ export class ManagerequestComponent implements OnInit{
       }
     }
 
-    ApproveRequest(id: number) {
-      this.http.post("http://127.0.0.1:8000/api/Requests/approve/" + id, {}).subscribe(
-        (resultData: any) => {
-          console.log(resultData);
-          this._coreService.openSnackBar('Request approved!', 'done');
-        },
-        (error: any) => {
-          console.error(error);
-        }
-      );
+ApproveRequest(id: number) {
+  this.http.post("http://127.0.0.1:8000/api/Requests/approve/" + id, {}).subscribe(
+    (resultData: any) => {
+      console.log(resultData);
+      if (resultData === 'Request is already approved!') {
+        this._coreService.openSnackBar(resultData, 'warning');
+      } else {
+        this._coreService.openSnackBar('Request approved!', 'done');
+      }
+      this.getPendingRequests();
+    },
+    (error: any) => {
+      console.error(error);
     }
+  );
+}
     RejectRequest(id: number) {
       this.http.post("http://127.0.0.1:8000/api/Requests/rejectByManager/" + id, {}).subscribe(
         (resultData: any) => {
           console.log(resultData);
-          this._coreService.openSnackBar('Request rejected!', 'done');
+          if (resultData === 'Request is already unvalidated!') {
+            this._coreService.openSnackBar(resultData, 'warning');
+          }else{
+            this._coreService.openSnackBar('Request rejected!', 'done');
+          }
+          this.getPendingRequests();
         },
         (error: any) => {
           console.error(error);

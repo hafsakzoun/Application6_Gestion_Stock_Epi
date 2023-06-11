@@ -1,8 +1,5 @@
-<main class="content" style="background-image: url('assets/images/request.jpg'); background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-min-height: 650px;">
-    <h1 style=" font-size: 80px; color: white; font-family:'Times New Roman', Times, serif; padding-top: 10% ; padding-bottom: 2%;padding-left: 25%;">Consultation By Area</h1>
+<main class="content" style="background-image: url('assets/images/request.jpg');">
+    <h1 >Consultation By Area</h1>
 <div class="row justifu-content-center"style="display: flex; ">
   <div class="card-container">
     <div class="card box-shadow mx-auto my-5" *ngFor="let area of areas">
@@ -11,7 +8,10 @@ min-height: 650px;">
       </div>
       <div class="card-body">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let epi of area.epis">{{ epi.label }}</li>
+          <li class="list-group-item" *ngFor="let epi of area.epis">
+            <img class="PPEimg"[src]="epi.image">
+            {{ epi.label }}
+          </li>
         </ul>
       </div>
     </div>

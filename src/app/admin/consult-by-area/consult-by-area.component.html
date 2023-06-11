@@ -11,7 +11,7 @@ min-height: 650px;">
   <div class="container">
     
     
-    <h1 class="m-4" style=" font-size: 100px; color: white; font-family:'Times New Roman', Times, serif">Areas</h1>
+    <h1 class="m-4" style=" font-size: 75px; color: white; font-family:'Times New Roman', Times, serif; text-shadow: 8px 5px 15px #e98300;">Areas</h1>
     <button mat-flat-button style="vertical-align: middle;" class="addBtn" (click)="showAddAreaForm = true">
       <mat-icon>add_circle</mat-icon> ADD A NEW area
     </button>
@@ -37,9 +37,10 @@ min-height: 650px;">
                     <mat-icon>delete</mat-icon>
                   </button></h3>
                   <hr>
-                  <p class="card-text">PPE</p>
+                  <p class="card-text" style="font-size: 18px; font-weight: 400;">PPE permitted to this area :</p>
                   <ul>
-                    <li class="m-2" *ngFor="let epi of area.epis let i = index">
+                    <li  *ngFor="let epi of area.epis let i = index">
+                      <img class="PPEimg"[src]="epi.image">
                       {{ epi.label }}
                       <button class="m-2" mat-icon-button color="warn" (click)="deleteEpi(area.id, epi.id)">
                         <mat-icon>delete</mat-icon>
@@ -48,11 +49,13 @@ min-height: 650px;">
                     <li class="m-2">
                       <form>
                         <div class="form-group">
-                          <select class="form-control" [(ngModel)]="area.newEpiLabel" [ngModelOptions]="{ standalone: true }">
+                          <div class="addPPE">
+                          <select class="form-control" style="height: fit-content;"[(ngModel)]="area.newEpiLabel" [ngModelOptions]="{ standalone: true }">
                             <option *ngFor="let epiL of EpisLabels" [value]="epiL">{{ epiL }}</option>
                           </select>
-                        </div>
-                        <button (click)="addEpi(area, area.newEpiLabel)" class="btn btn-primary m-3">Add PEE</button>
+                        <button (click)="addEpi(area, area.newEpiLabel)" class="btn btn-primary m-3" style="height: fit-content;"><mat-icon> add </mat-icon></button>
+                      </div>
+                    </div>
                       </form>
                     </li>
                   </ul>

@@ -8,7 +8,7 @@ body {
 }
 
 main.table {
-  width: 75vw;
+  width: 90vw;
   height: 85vh;
   background-color: #fff5;
   backdrop-filter: blur(7px);
@@ -30,10 +30,10 @@ main.table {
 }
 
 .table_body {
-  width: 90%;
+  width: 98%;
   max-height: calc(89% - 1.6rem);
   background-color: #fffb;
-  margin: .10rem auto;
+  margin: .5rem auto;
   border-radius: .6rem;
   overflow: auto;
   overflow: overlay;

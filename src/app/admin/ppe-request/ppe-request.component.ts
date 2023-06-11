@@ -24,6 +24,7 @@ export class PpeRequestComponent  implements OnInit{
     'ppe_label',
     'ppe_size',
     'RequestedQt',
+    'createdDate',
     'status',
     'action',
   ];
@@ -131,15 +132,11 @@ export class PpeRequestComponent  implements OnInit{
     RejectRequest(id: number) {
       this.http.post("http://127.0.0.1:8000/api/Requests/reject/" + id, {}).subscribe(
         (resultData: any) => {
-          if (resultData && resultData.status === 'Rejected') {
-            console.log(resultData.status);
-            this._coreService.openSnackBar('Request already rejected!', 'warning');
-            this.getRejectedRequests();
-          } else {
+          if (resultData === 'Request is already rejected!') {
+            this._coreService.openSnackBar('Request is already rejected', 'warning');
+          }else {
             console.log(resultData);
-            console.log(resultData.name);
             this._coreService.openSnackBar('Request rejected!', 'done');
-            this.getRejectedRequests();
           }
           
         },
@@ -153,10 +150,10 @@ export class PpeRequestComponent  implements OnInit{
     DeliverRequest(id: number) {
       this.http.post("http://127.0.0.1:8000/api/Requests/deliver/" + id, {}).subscribe(
         (resultData: any) => {
-          if (resultData.status === 'Delivered') {
-            console.log(resultData);
-            this._coreService.openSnackBar('Request already delivered!', 'warning');
-          } else {
+          if (resultData === 'Request is already rejected!') {
+            this._coreService.openSnackBar('Request is already delivered', 'warning');
+          }
+          else {
             console.log(resultData);
             this._coreService.openSnackBar('Request delivered!', 'done');
           }

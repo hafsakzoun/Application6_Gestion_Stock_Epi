@@ -8,7 +8,7 @@ body {
 }
 
 main.table {
-  width: 80vw;
+  width: 90vw;
   height: 85vh;
   background-color: #fff5;
   backdrop-filter: blur(7px);
@@ -61,7 +61,7 @@ table {
 table, th, td {
   border-collapse: collapse;
   padding: 1rem;
-  text-align:left;
+  text-align:center;
   font-size: 18px;
 }
 
@@ -185,5 +185,48 @@ tr:nth-child(even) {
   position: sticky;
   display: flex;
 }
+
+.delivered
+{
+  display: inline-block;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 50px;
+  background-color: green  !important;
+}
+.approved
+{
+  display: inline-block;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 50px;
+  background-color:blue !important;
+}
+.validated
+{
+  display: inline-block;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 50px;
+  background-color:rgb(255, 119, 0) !important;
+}
+.rejected
+{
+  display: inline-block;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 50px;
+  background-color: red !important;
+}
+.pending
+{
+  display: inline-block;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 50px;
+  background-color: grey !important;
+}
+
+
 
 

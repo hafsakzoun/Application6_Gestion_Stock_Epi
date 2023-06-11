@@ -13,6 +13,7 @@ import { CoreService } from 'src/app/core/core.service';
   styleUrls: ['./request.component.scss']
 })
 export class RequestComponent implements OnInit{
+
   epis:any[]= [];
   
 
@@ -25,8 +26,8 @@ export class RequestComponent implements OnInit{
     'ppe_label',
     'ppe_size',
     'RequestedQt',
+    'createdDate',
     'status',
-    'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -40,6 +41,13 @@ export class RequestComponent implements OnInit{
   openRequestForm()
   {
     const dialogRef = this._dialog.open(RequestFormComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getRequests();
+        }
+      },
+    });
   }
 
   ngOnInit(): void {
@@ -67,19 +75,5 @@ export class RequestComponent implements OnInit{
       this.dataSource.paginator.firstPage();
     }
   }
-
-  approveRequest(id: number) {
-    this.http.post("http://127.0.0.1:8000/api/Requests/approve/" + id, {}).subscribe(
-      (resultData: any) => {
-        console.log(resultData);
-        this._coreService.openSnackBar('Request approved!', 'done');
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
-  
-  
   
 }
